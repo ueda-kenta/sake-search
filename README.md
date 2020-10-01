@@ -19,6 +19,8 @@
 
 ## 設計書
 er図(https://user-images.githubusercontent.com/67784775/94758412-03698b80-03d8-11eb-9987-40237a995ed6.jpg)
+画面構成(https://user-images.githubusercontent.com/67784775/94758649-9efafc00-03d8-11eb-9882-ae24390bc874.jpg)
+
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/13MOJMwfoF9A990aH1fkfk4Og9D878jfMmb--VYSMhYk/edit#gid=0
 
