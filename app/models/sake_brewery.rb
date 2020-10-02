@@ -1,0 +1,2 @@
+class SakeBrewery < ApplicationRecord
+end
