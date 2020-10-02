@@ -1,0 +1,24 @@
+<div class="container">
+	<div class="row">
+		<h4><%= link_to "戻る", posts_path %></h4>
+		<h1>投稿詳細</h1>
+	</div>
+	<div class="row">
+		<div class="mx-auto">
+			<table>
+				<tbody>
+					<tr><th>投稿者:<%= @post.user.nickname %></th></tr>
+					<tr><th>日本酒名:<%= @post.sake_name %></th></tr>
+					<tr><td><%= attachment_image_tag @post, :sake_img,  size: "300x300" %></td></tr>
+					<tr><td>日本酒度:<%= @post.sake_degree %></td></tr>
+					<tr><td><%= @post.sake_text %></td></tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3 offset-md-8">
+			<%= link_to "削除", post_path(@post), method: :delete %>
+		</div>
+	</div>
+</div>

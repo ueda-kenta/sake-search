@@ -1,7 +1,8 @@
 <div class="container">
 	<h1>新規投稿</h1>
 	<div class="row">
-		<%= form_for(@post) do |f| %>
+		<%= form_for (@post) do |f| %>
+		<%= render 'layouts/error_form', model: f.object %>
 		<div class="field">
 		<%= f.label :画像 %>
 		<%= f.attachment_field :sake_img %>
