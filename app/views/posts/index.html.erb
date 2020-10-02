@@ -1,1 +1,20 @@
-<h1>投稿一覧</h1>
+<div class="container">
+	<div class="row">
+		<h1>投稿一覧</h1>
+		<p><%= link_to "投稿する", new_post_path %></p>
+	</div>
+	<div class="row">
+		<% @posts.each do |post| %>
+		<table class="sake-index">
+			<tbody>
+				<tr><th>投稿者:<%= post.user.nickname %></th></tr>
+				<tr><th>日本酒名:<%= post.sake_name %></th></tr>
+				<tr><td><%= attachment_image_tag post, :sake_img,  size: "300x300" %></td></tr>
+				<tr><td>日本酒度:<%= post.sake_degree %></td></tr>
+				<tr><td><%= post.sake_text %></td></tr>
+			</tbody>
+		</table>
+		<% end %>
+	</div>
+	
+</div>

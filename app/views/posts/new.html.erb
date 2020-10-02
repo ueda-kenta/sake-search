@@ -1,0 +1,24 @@
+<div class="container">
+	<h1>新規投稿</h1>
+	<div class="row">
+		<%= form_for(@post) do |f| %>
+		<div class="field">
+		<%= f.label :画像 %>
+		<%= f.attachment_field :sake_img %>
+		</div>
+		<div class="field">
+		<%= f.label :酒名 %>
+		<%= f.text_field :sake_name %>
+		</div>
+		<div class="field">
+		<%= f.label :酒度 %>
+		<%= f.number_field :sake_degree, value:0 %>
+		</div>
+		<div class="field">
+		<%= f.label :感想 %>
+		<%= f.text_area :sake_text %>
+		</div>
+		<%= f.submit "投稿" %>
+		<% end %>
+	</div>
+</div>
