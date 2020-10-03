@@ -1,0 +1,47 @@
+<div class="container">
+	<div class="row">
+		<%= link_to "タイムラインへ", posts_path %>
+		<h1 class="main_title">ユーザー情報</h1>
+		<%= flash[:notice] %>
+	</div>
+	<div class="row">
+		<div class="col-md-4 profile_img">
+			<%= attachment_image_tag @user, :profile_img_id, fallback: "no_img.png", size: "200x200" %>
+			<%= link_to "編集する", edit_user_path(@user) %>
+			<table class="table">
+				<tbody>
+					<tr>
+						<th>名前</th><td><%= @user.last_name + " " + @user.first_name%></td>
+					</tr>
+					<tr>
+						<th>ニックネーム</th><td><%= @user.nickname %></td>
+					</tr>
+					<tr>
+						<th>紹介文</th><td><%= @user.profile_text %></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-md-8">
+			<h3>投稿一覧</h3>
+			<% @posts.each do |post| %>
+			<%= link_to post_path(post.id) do %>
+			<table class="sake-index-user_show">
+				<tbody>
+					<tr><th>投稿者:<%= post.user.nickname %></th></tr>
+					<tr><th>日本酒名:<%= post.sake_name %></th></tr>
+					<tr><td><%= attachment_image_tag post, :sake_img,  size: "200x200" %></td></tr>
+					<tr><td>日本酒度:<%= post.sake_degree %></td></tr>
+					<tr><td><%= post.sake_text %></td></tr>
+				</tbody>
+			</table>
+			<% end %>
+			<% end %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+
+		</div>
+	</div>
+</div>
