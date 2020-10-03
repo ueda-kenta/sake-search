@@ -6,4 +6,5 @@ class Post < ApplicationRecord
   attachment :sake_img
   validates :sake_name, presence: true, length: { maximum: 20 }
   validates :sake_text, presence: true, length: { maximum: 140 }
+  validates :sake_img_id, presence: true
 end
