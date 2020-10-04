@@ -11,6 +11,16 @@
 		<%= f.label :酒名 %>
 		<%= f.text_field :sake_name %>
 		</div>
+		<%= f.fields_for :sake_brewery do |i| %> <%# 酒蔵テーブルに保存 %>
+		<div class="field">
+			<%= i.label :酒蔵名 %>
+		<%= i.text_field :brewery_name %>
+		</div>
+		<div class="field">
+			<%= i.label :酒蔵所在地 %>
+		<%= i.select :brewery_prefecture, SakeBrewery.brewery_prefectures.keys, {prompt: "--選択してください--"}  %>
+		</div>
+		<% end %>
 		<div class="field">
 		<%= f.label :酒度 %>
 		<%= f.number_field :sake_degree, value:0 %>

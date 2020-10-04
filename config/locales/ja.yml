@@ -3,6 +3,7 @@ ja:
     models:
       post:
       user:
+      sake_brewery: 酒蔵
     attributes:
       post:
         sake_name: 酒名
@@ -13,3 +14,6 @@ ja:
         first_name: 名
         nickname: ニックネーム
         profile_text: 紹介文
+      sake_brewery:
+        brewery_name: 酒蔵名
+        brewery_prefecture: 酒蔵所在地

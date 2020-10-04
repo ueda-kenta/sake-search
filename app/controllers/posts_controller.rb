@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
 	def new
 		@post = Post.new
+		@post.build_sake_brewery
 	end
 
 	def create
@@ -31,7 +32,7 @@ class PostsController < ApplicationController
 
 	private
 	def post_params
-		params.require(:post).permit(:user_id, :sake_brewery_id, :sake_name, :sake_img, :tag_id, :sake_text, :sake_degree)
+		params.require(:post).permit(:user_id, :sake_brewery_id, :sake_name, :sake_img, :tag_id, :sake_text, :sake_degree, sake_brewery_attributes:[:id, :brewery_name, :brewery_prefecture, :brewery_address])
 	end
 
 end
