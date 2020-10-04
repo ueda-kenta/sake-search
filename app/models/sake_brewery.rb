@@ -15,7 +15,4 @@ enum brewery_prefecture:{
      沖縄県:47
    }
 
-   # def full_address 住所の定義
-     # self.brewery_prefecture + self.brewery_address
-   # end
 end
