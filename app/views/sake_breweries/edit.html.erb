@@ -1,0 +1,19 @@
+<div class="container">
+	<div class="row">
+		<h1>酒造編集</h1>
+	</div>
+	<div class="row">
+		<%= form_for (@sake_brewery) do |f| %>
+		<div class="field">
+		<%= f.label :酒造名 %>
+		<%= f.text_field :brewery_name %>
+		</div>
+		<div class="field">
+		<%= f.label :酒造住所 %>
+		<%= f.select :brewery_prefecture, SakeBrewery.brewery_prefectures.keys %>
+		<%= f.text_field :brewery_address %>
+		</div>
+		<%= f.submit "更新する" %>
+		<% end %>
+	</div>
+</div>

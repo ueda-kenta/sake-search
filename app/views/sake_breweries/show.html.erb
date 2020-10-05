@@ -1,0 +1,37 @@
+<div class="container">
+	<div class="row">
+		<h1><%= @sake_brewery.brewery_name %></h1>
+		<%= link_to "編集する", edit_sake_brewery_path(@sake_brewery) %>
+	</div>
+	<div class="row">
+		<div class= "col-md-4">
+			<table>
+				<tbody>
+					<tr>
+						<th>地図</th>
+						<th></th>
+					</tr>
+					<tr>
+						<th>所在地</th>
+						<th><%= @sake_brewery.brewery_prefecture %>  <%= @sake_brewery.brewery_address %></th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-md-8">
+			<% @posts.each do |post| %>
+			<%= link_to post_path(post.id) do %>
+			<table>
+				<tbody>
+					<tr><th>投稿者:<%= post.user.nickname %></th></tr>
+					<tr><th>日本酒名:<%= post.sake_name %></th></tr>
+					<tr><td><%= attachment_image_tag post, :sake_img,  size: "200x200" %></td></tr>
+					<tr><td>日本酒度:<%= post.sake_degree %></td></tr>
+					<tr><td><%= post.sake_text %></td></tr>
+				</tbody>
+			</table>
+			<% end %>
+			<% end %>
+		</div>
+	</div>
+</div>
