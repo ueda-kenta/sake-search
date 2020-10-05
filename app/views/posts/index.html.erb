@@ -9,11 +9,23 @@
 		<%= link_to post_path(post.id) do %>
 		<table class="sake-index">
 			<tbody>
-				<tr><th>投稿者:<%= post.user.nickname %></th></tr>
-				<tr><th>日本酒名:<%= post.sake_name %></th></tr>
-				<tr><td><%= attachment_image_tag post, :sake_img,  size: "300x300" %></td></tr>
-				<tr><td>日本酒度:<%= post.sake_degree %></td></tr>
-				<tr><td><%= post.sake_text %></td></tr>
+				<tr>
+					<th>投稿者:<%= post.user.nickname %></th>
+				</tr>
+				<tr>
+					<th>日本酒名:<%= post.sake_name %></th>
+				</tr>
+				<tr>
+					<td><%= attachment_image_tag post, :sake_img,  size: "300x300" %></td>
+				</tr>
+				<tr>
+					<td>日本酒度:<%= post.sake_degree %></td>
+					<!-- いいね機能 -->
+					<td><%= render 'posts/like', post: post %></td>
+				</tr>
+				<tr>
+					<td><%= post.sake_text %></td>
+				</tr>
 			</tbody>
 		</table>
 		<% end %>
