@@ -3,7 +3,8 @@ class Post < ApplicationRecord
    accepts_nested_attributes_for :sake_brewery #１つのform_forでsake_breweryモデルも保存するため
   # belongs_to :tag
   belongs_to :user
-   has_many :likes, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   attachment :sake_img
   validates :sake_name, presence: true, length: { maximum: 20 }

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'about' => 'homes#about'
   resources :posts, except: [:edit, :update] do
   	resource :likes, only: [:create, :destroy]
+  	resources :comments, only: [:create, :destroy]
   end
   resources :users, except: [:index, :new, :create, :destroy]
   resources :sake_breweries, only: [:show, :edit, :update]
