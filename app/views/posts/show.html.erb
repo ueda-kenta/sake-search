@@ -18,7 +18,7 @@
 					</tr>
 					<tr>
 						<td>日本酒度:<%= @post.sake_degree %></td>
-						<td><%= render 'likes/like', post: @post %></td>
+						<td><div id="ajax_favorite"><%= render 'likes/like', post: @post %></td></div>
 					</tr>
 					<tr><td>
 						<pre>酒蔵:<%= link_to @post.sake_brewery.brewery_name, sake_brewery_path(@post.sake_brewery.id) %>   所在地:<%= @post.sake_brewery.brewery_prefecture %></pre>

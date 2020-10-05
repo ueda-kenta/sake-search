@@ -6,14 +6,13 @@
 	</div>
 	<div class="row">
 		<% @posts.each do |post| %>
-		<%= link_to post_path(post.id) do %>
 		<table class="sake-index">
 			<tbody>
 				<tr>
 					<th>投稿者:<%= post.user.nickname %></th>
 				</tr>
 				<tr>
-					<th>日本酒名:<%= post.sake_name %></th>
+					<th>日本酒名:<%= link_to post.sake_name, post_path(post.id) %></th>
 				</tr>
 				<tr>
 					<td><%= attachment_image_tag post, :sake_img,  size: "300x300" %></td>
@@ -28,7 +27,6 @@
 				</tr>
 			</tbody>
 		</table>
-		<% end %>
 		<% end %>
 	</div>
 	

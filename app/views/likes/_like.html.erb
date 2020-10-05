@@ -1,12 +1,14 @@
+<div id="ajax_favorite_<%= post.id %>">
 <% if post.liked_by?(current_user) %>
-  <%= link_to post_likes_path(post), method: :delete do %>
+  <%= link_to post_likes_path(post), method: :delete, remote: true do %>
     <i class="fas fa-star" aria-hidden="true" style="color: yellow;"></i>
     <%= post.likes.count %>
   <% end %>
 <% else %>
-  <%= link_to post_likes_path(post), method: :post do %>
+  <%= link_to post_likes_path(post), method: :post, remote: true do %>
     <i class="fas fa-star" aria-hidden="true"></i>
     <%= post.likes.count %>
   <% end %>
 </li>
 <% end %>
+</div>

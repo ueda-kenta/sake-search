@@ -2,6 +2,8 @@ class CommentsController < ApplicationController
 	
 	def create
 		post = Post.find(params[:post_id])
+		# comment = Comment.new(omment_params)
+		# comment.user_id = current_user.id を１行で記述
 		comment = current_user.comments.new(comment_params)
 		comment.post_id = post.id
 		comment.save
