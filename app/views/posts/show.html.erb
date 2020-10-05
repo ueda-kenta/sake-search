@@ -28,19 +28,10 @@
 			</table>
 		</div>
 		<div class="mx-auto">
-			<h3>コメント一覧</h3>
-			<% @comments.each do |comment| %>
-			<table class="table">
-				<tbody>
-					<tr>
-						<td><%= comment.user.nickname %></td>      <td><%= comment.comment %></td>
-						<td><%=link_to "削除", post_comment_path(comment.post_id, comment), method: :delete %></td>
-					</tr>
-				</tbody>
-			</table>
-			<% end %>
+			<!-- ここにコメント -->
+			<%= render partial: 'comments/comment', locals: { post: @post, comments: @comments } %>
 			<!-- コメント入力欄 -->
-			<%= form_for [@post, @comment] do |f| %>
+			<%= form_for [@post, @comment], remote: true  do |f| %>
 			<%= f.text_area :comment, placeholder: "コメント入力" %>
 			<%= f.submit "送信する" %>
 			<% end %>
