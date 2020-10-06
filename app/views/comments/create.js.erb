@@ -1,0 +1,2 @@
+$('#comments_area').html("<%= j(render partial: 'comments/comment', locals: { post: @post, comments: @comments })%>");
+$("textarea").val('')  //投稿後テキストエリアを空にする

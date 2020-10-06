@@ -1,0 +1,27 @@
+<% posts.each do |post| %>
+<table class="sake-index-user_show">
+	<tbody>
+		<tr>
+			<th>投稿者: <%= attachment_image_tag user, :profile_img_id, fallback: "no_img.png", size: "30x30" %><%= post.user.nickname %></th>
+		</tr>
+		<tr>
+			<th>日本酒名:<%= link_to post.sake_name, post_path(post.id) %></th>
+		</tr>
+		<tr>
+			<td>
+				<%= link_to post_path(post.id) do %>
+				<%= attachment_image_tag post, :sake_img,  size: "200x200" %>
+				<% end %>
+			</td>
+
+		</tr>
+		<tr>
+			<td>日本酒度:<%= post.sake_degree %></td>
+			<td><%= render 'likes/like', post: post %></td>
+		</tr>
+		<tr>
+			<td><%= post.sake_text %></td>
+		</tr>
+	</tbody>
+</table>
+<% end %>

@@ -1,0 +1,34 @@
+<div class="container">
+	<div class="row">
+		<h1>お気に入り一覧</h1>
+	</div>
+	<div class="row">
+		<% @likes.each do |like| %>
+<table class="sake-index-user_show">
+	<tbody>
+		<tr>
+			<th>投稿者: <%= attachment_image_tag @user, :profile_img_id, fallback: "no_img.png", size: "30x30" %><%= like.user.nickname %></th>
+		</tr>
+		<tr>
+			 <th>日本酒名:<%= link_to like.post.sake_name, post_path(like.id) %></th>
+		</tr>
+		<tr>
+			<td>
+				<%= link_to post_path(like.id) do %>
+				<%= attachment_image_tag like.post, :sake_img,  size: "200x200" %>
+				<% end %>
+			</td>
+
+		</tr>
+		<tr>
+			<td>日本酒度:<%= like.post.sake_degree %></td>
+			<td><%= render 'likes/like', post: like.post %></td>
+		</tr>
+		<tr>
+			<td><%= like.post.sake_text %></td>
+		</tr>
+	</tbody>
+</table>
+<% end %>
+	</div>
+</div>

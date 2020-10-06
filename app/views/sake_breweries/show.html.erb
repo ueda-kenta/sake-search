@@ -19,19 +19,7 @@
 			</table>
 		</div>
 		<div class="col-md-8">
-			<% @posts.each do |post| %>
-			<%= link_to post_path(post.id) do %>
-			<table>
-				<tbody>
-					<tr><th>投稿者:<%= post.user.nickname %></th></tr>
-					<tr><th>日本酒名:<%= post.sake_name %></th></tr>
-					<tr><td><%= attachment_image_tag post, :sake_img,  size: "200x200" %></td></tr>
-					<tr><td>日本酒度:<%= post.sake_degree %></td></tr>
-					<tr><td><%= post.sake_text %></td></tr>
-				</tbody>
-			</table>
-			<% end %>
-			<% end %>
+			<%= render 'posts/sake_show', posts: @posts, user: @user %>
 		</div>
 	</div>
 </div>
