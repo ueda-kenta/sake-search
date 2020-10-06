@@ -12,7 +12,7 @@
 				<tbody>
 					<tr>
 						<th>お気に入り</th>
-						<td><%= @user.likes.count %>件</td>
+						<td><%= link_to @user.likes.count, user_like_path(@user) %>件</td>
 					</tr>
 					<tr>
 						<th>名前</th>
