@@ -10,6 +10,9 @@ class Post < ApplicationRecord
   validates :sake_name, presence: true, length: { maximum: 20 }
   validates :sake_text, presence: true, length: { maximum: 140 }
   # validates :sake_img_id, presence: true
+  
+  # idの昇順にモデルで指定
+  default_scope -> { order(id: :desc) }
 
   def liked_by?(user)
   	likes.where(user_id: user.id).exists?

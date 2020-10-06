@@ -20,13 +20,13 @@ class PostsController < ApplicationController
 	end
 
 	def index
-		@posts = Post.all
+		@posts = Post.all.page(params[:page]).per(9)
 	end
 
 	def show
 		@post = Post.find(params[:id])
 		@comment = Comment.new
-		@comments = Comment.where(post_id: @post.id).order(created_at: :desc)
+		@comments = Comment.where(post_id: @post.id)
 	end
 
 	def destroy

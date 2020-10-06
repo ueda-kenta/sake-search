@@ -9,7 +9,7 @@
 		<table class="sake-index">
 			<tbody>
 				<tr>
-					<th>投稿者:<%= post.user.nickname %></th>
+					<th>投稿者: <%= attachment_image_tag @user, :profile_img_id, fallback: "no_img.png", size: "30x30" %><%= post.user.nickname %></th>
 				</tr>
 				<tr>
 					<th>日本酒名:<%= link_to post.sake_name, post_path(post.id) %></th>
@@ -33,5 +33,7 @@
 		</table>
 		<% end %>
 	</div>
-	
+	<div class="pagination">
+	<%= paginate @posts, theme: "twitter-bootstrap-4" %>
+    </div>
 </div>
