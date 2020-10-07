@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_05_020952) do
+ActiveRecord::Schema.define(version: 2020_10_06_023208) do
 
   create_table "comments", force: :cascade do |t|
     t.text "comment"
@@ -44,6 +44,16 @@ ActiveRecord::Schema.define(version: 2020_10_05_020952) do
     t.index ["sake_brewery_id"], name: "index_posts_on_sake_brewery_id"
     t.index ["tag_id"], name: "index_posts_on_tag_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "follow_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["follow_id"], name: "index_relationships_on_follow_id"
+    t.index ["user_id", "follow_id"], name: "index_relationships_on_user_id_and_follow_id", unique: true
+    t.index ["user_id"], name: "index_relationships_on_user_id"
   end
 
   create_table "sake_breweries", force: :cascade do |t|

@@ -1,0 +1,38 @@
+<div class="container">
+	<div class="row">
+		<%= flash[:danger] %>
+		<%= flash[:notice] %>
+		<h1>フォロー一覧</h1>
+	</div>
+	<div class="row">
+		<div class="col-md-8">
+		<% @relationships.each do |relationship| %>
+		<table class="table">
+			<tbody>
+				<tr>
+					<th>
+					</th>
+					<th>名前</th>
+					<th>紹介文</th>
+					<th>フォロー</th>
+				</tr>
+				<tr>
+					<td style="width:8%">
+						<%= attachment_image_tag relationship.follow, :profile_img, fallback: "no_img.png", size: "30x30" %>
+					</td>
+					<th style="width:15%">
+						<%= relationship.follow.nickname %>
+					</th>
+					<td style="width:60%">
+						<%= relationship.follow.profile_text %>
+					</td>
+					<td>
+						<%= render 'relationships/follow_button', user: relationship.follow %>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<% end %>
+	</div>
+	</div>
+</div>
