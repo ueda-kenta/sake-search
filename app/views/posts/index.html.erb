@@ -6,22 +6,29 @@
 	</div>
 	<div class="row">
 		<% @posts.each do |post| %>
-		<%= link_to post_path(post.id) do %>
 		<table class="sake-index">
 			<tbody>
 				<tr>
-					<th>投稿者:<%= post.user.nickname %></th>
+					<th>投稿者: 
+						<%= link_to(user_path(post.user),"data-turbolinks": false) do %>
+						<%= attachment_image_tag post.user, :profile_img, fallback: "no_img.png", size: "30x30" %><%= post.user.nickname %>
+						<% end %>
+					</th>
 				</tr>
 				<tr>
-					<th>日本酒名:<%= post.sake_name %></th>
+					<th>日本酒名:<%= link_to post.sake_name, post_path(post.id) %></th>
 				</tr>
 				<tr>
-					<td><%= attachment_image_tag post, :sake_img,  size: "300x300" %></td>
+					<td>
+						<%= link_to(post_path(post.id)) do %>
+						<%= attachment_image_tag post, :sake_img,  size: "300x300" %>
+						<% end %>
+					</td>
 				</tr>
 				<tr>
 					<td>日本酒度:<%= post.sake_degree %></td>
 					<!-- いいね機能 -->
-					<td><%= render 'posts/like', post: post %></td>
+					<td><%= render 'likes/like', post: post %></td>
 				</tr>
 				<tr>
 					<td><%= post.sake_text %></td>
@@ -29,7 +36,8 @@
 			</tbody>
 		</table>
 		<% end %>
-		<% end %>
 	</div>
-	
+	<div class="pagination">
+	<%= paginate @posts, theme: "twitter-bootstrap-4" %>
+    </div>
 </div>

@@ -7,10 +7,24 @@
 		<div class="mx-auto">
 			<table>
 				<tbody>
-					<tr><th>投稿者:<%= @post.user.nickname %></th></tr>
-					<tr><th>日本酒名:<%= @post.sake_name %></th></tr>
-					<tr><td><%= attachment_image_tag @post, :sake_img,  size: "300x300" %></td></tr>
-					<tr><td>日本酒度:<%= @post.sake_degree %></td></tr>
+					<tr>
+						<th>
+							投稿者:
+							<%= link_to(user_path(@post.user)) do %>
+							<%= attachment_image_tag @user, :profile_img_id, fallback: "no_img.png", size: "30x30" %><%= @post.user.nickname %>
+							<% end %>
+						</th>
+					</tr>
+					<tr>
+						<th>日本酒名:<%= @post.sake_name %></th>
+					</tr>
+					<tr>
+						<td><%= attachment_image_tag @post, :sake_img,  size: "300x300" %></td>
+					</tr>
+					<tr>
+						<td>日本酒度:<%= @post.sake_degree %></td>
+						<td><div id="ajax_favorite"><%= render 'likes/like', post: @post %></td></div>
+					</tr>
 					<tr><td>
 						<pre>酒蔵:<%= link_to @post.sake_brewery.brewery_name, sake_brewery_path(@post.sake_brewery.id) %>   所在地:<%= @post.sake_brewery.brewery_prefecture %></pre>
 					</td></tr>
@@ -18,9 +32,18 @@
 				</tbody>
 			</table>
 		</div>
+		<div class="mx-auto">
+			<!-- ここにコメント -->
+			<%= render partial: 'comments/comment', locals: { post: @post, comments: @comments } %>
+			<!-- コメント入力欄 -->
+			<%= form_for [@post, @comment], remote: true  do |f| %>
+			<%= f.text_area :comment, placeholder: "コメント入力" %>
+			<%= f.submit "送信する" %>
+			<% end %>
+		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-3 offset-md-8">
+		<div class="col-md-3 offset-md-5">
 			<% if @post.user == current_user %>
 			<%= link_to "削除", post_path(@post), method: :delete %>
 			<% end %>

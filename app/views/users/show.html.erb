@@ -6,37 +6,45 @@
 	</div>
 	<div class="row">
 		<div class="col-md-4 profile_img">
-			<%= attachment_image_tag @user, :profile_img_id, fallback: "no_img.png", size: "200x200" %>
+			<%= attachment_image_tag @user, :profile_img, fallback: "no_img.png", size: "200x200" %>
+			<% if @user == current_user  %>
 			<%= link_to "編集する", edit_user_path(@user) %>
+			<% end %>
 			<table class="table">
 				<tbody>
 					<tr>
-						<th>名前</th><td><%= @user.last_name + " " + @user.first_name%></td>
+						<%= render 'relationships/follow_button', user: @user %>
+					</tr>
+					<% if @user == current_user %>
+					<tr>
+						<th>フォロー</th>
+						<td>
+							<%= link_to @user.relationships.count, user_follow_index_path(@user) %>人
+						</td>
+					</tr>
+					<% end %>
+					<tr>
+						<th>お気に入り</th>
+						<td><%= link_to @user.likes.count, user_like_path(@user) %>件</td>
 					</tr>
 					<tr>
-						<th>ニックネーム</th><td><%= @user.nickname %></td>
+						<th>名前</th>
+						<td><%= @user.last_name + " " + @user.first_name%></td>
 					</tr>
 					<tr>
-						<th>紹介文</th><td><%= @user.profile_text %></td>
+						<th>ニックネーム</th>
+						<td><%= @user.nickname %></td>
+					</tr>
+					<tr>
+						<th>紹介文</th>
+						<td><%= @user.profile_text %></td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 		<div class="col-md-8">
 			<h3>投稿一覧</h3>
-			<% @posts.each do |post| %>
-			<%= link_to post_path(post.id) do %>
-			<table class="sake-index-user_show">
-				<tbody>
-					<tr><th>投稿者:<%= post.user.nickname %></th></tr>
-					<tr><th>日本酒名:<%= post.sake_name %></th></tr>
-					<tr><td><%= attachment_image_tag post, :sake_img,  size: "200x200" %></td></tr>
-					<tr><td>日本酒度:<%= post.sake_degree %></td></tr>
-					<tr><td><%= post.sake_text %></td></tr>
-				</tbody>
-			</table>
-			<% end %>
-			<% end %>
+			<%= render 'posts/sake_show', posts: @posts, user: @user %>
 		</div>
 	</div>
 	<div class="row">

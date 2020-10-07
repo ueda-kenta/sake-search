@@ -22,14 +22,16 @@ class PostsController < ApplicationController
 	end
 
 	def index
-		@posts = Post.all
+		@posts = Post.all.page(params[:page]).per(9)
 		@tag_list = Tag.all
 	    @post = current_user.posts.new #よく分からん
 	end
 
 	def show
 		@post = Post.find(params[:id])
-		@post_tags = @post.tags
+		@comment = Comment.new
+		@comments = Comment.where(post_id: @post.id)
+
 	end
 
 	def destroy
