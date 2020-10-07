@@ -11,6 +11,12 @@
 		<%= f.label :酒名 %>
 		<%= f.text_field :sake_name %>
 		</div>
+		<div class="field">
+			<%= f.fields_for :tag do |i| %><%# タグテーブルに保存 %>
+		<%= i.label :タグ %>
+		<%= i.text_field :tag_name %>
+		<% end %>
+		</div>
 		<%= f.fields_for :sake_brewery do |i| %> <%# 酒蔵テーブルに保存 %>
 		<div class="field">
 			<%= i.label :酒蔵名 %>
