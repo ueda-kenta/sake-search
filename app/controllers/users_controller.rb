@@ -24,9 +24,12 @@ class UsersController < ApplicationController
 		@likes = Like.where(user_id: params[:user_id])
 	end
 
+	def follow_index
+		@relationships = Relationship.where(user_id: params[:user_id])
+	end
 
 	private
 	def user_params
-		params.require(:user).permit(:last_name, :first_name, :profile_img_id, :profile_text, :user_address, :nickname)
+		params.require(:user).permit(:last_name, :first_name, :profile_img, :profile_text, :user_address, :nickname)
 	end
 end

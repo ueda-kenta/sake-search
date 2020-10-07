@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   end
   resources :users, except: [:index, :new, :create, :destroy] do
     get 'like' => 'users#like'
+    get 'follow_index' => 'users#follow_index'
   end
   resources :sake_breweries, only: [:show, :edit, :update]
+  resources :relationships, only: [:create, :destroy]
 end

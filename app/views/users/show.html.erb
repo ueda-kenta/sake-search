@@ -6,10 +6,23 @@
 	</div>
 	<div class="row">
 		<div class="col-md-4 profile_img">
-			<%= attachment_image_tag @user, :profile_img_id, fallback: "no_img.png", size: "200x200" %>
+			<%= attachment_image_tag @user, :profile_img, fallback: "no_img.png", size: "200x200" %>
+			<% if @user == current_user  %>
 			<%= link_to "編集する", edit_user_path(@user) %>
+			<% end %>
 			<table class="table">
 				<tbody>
+					<tr>
+						<%= render 'relationships/follow_button', user: @user %>
+					</tr>
+					<% if @user == current_user %>
+					<tr>
+						<th>フォロー</th>
+						<td>
+							<%= link_to @user.relationships.count, user_follow_index_path(@user) %>人
+						</td>
+					</tr>
+					<% end %>
 					<tr>
 						<th>お気に入り</th>
 						<td><%= link_to @user.likes.count, user_like_path(@user) %>件</td>
