@@ -1,7 +1,7 @@
 <div class="container">
 	<h1>新規投稿</h1>
 	<div class="row">
-		<%= form_for (@post) do |f| %>
+		<%= form_with(model: @post) do |f| %>
 		<%= render 'layouts/error_form', model: f.object %>
 		<div class="field">
 		<%= f.label :画像 %>
@@ -10,6 +10,10 @@
 		<div class="field">
 		<%= f.label :酒名 %>
 		<%= f.text_field :sake_name %>
+		</div>
+		<div class="field">
+		<%= f.label :タグ %>
+		<%= f.text_field :tag_name %>
 		</div>
 		<%= f.fields_for :sake_brewery do |i| %> <%# 酒蔵テーブルに保存 %>
 		<div class="field">

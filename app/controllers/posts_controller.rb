@@ -8,10 +8,12 @@ class PostsController < ApplicationController
 		# @をつけるのはrenderの際viewにデータを渡すため
 		@sake_brewery = SakeBrewery.find_or_create_by(brewery_name: post_params[:sake_brewery_attributes][:brewery_name], brewery_prefecture: post_params[:sake_brewery_attributes][:brewery_prefecture] )
 		@post = Post.new(post_params)
+		tag_list = params[:post][:tag_name].split(nil)
 		@post.user_id = current_user.id
 		@post.sake_brewery_id = @sake_brewery.id
 
 			if @post.save
+				@post.save_tag(tag_list)
 				flash[:notice] = "投稿しました"
 				redirect_to posts_path
 		    else
@@ -21,10 +23,13 @@ class PostsController < ApplicationController
 
 	def index
 		@posts = Post.all
+		@tag_list = Tag.all
+	    @post = current_user.posts.new #よく分からん
 	end
 
 	def show
 		@post = Post.find(params[:id])
+		@post_tags = @post.tags
 	end
 
 	def destroy

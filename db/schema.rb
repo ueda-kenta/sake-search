@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_05_010227) do
+ActiveRecord::Schema.define(version: 2020_10_07_052420) do
+
+  create_table "comments", force: :cascade do |t|
+    t.text "comment"
+    t.integer "user_id"
+    t.integer "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_comments_on_post_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
 
   create_table "likes", force: :cascade do |t|
     t.integer "user_id"
@@ -26,14 +36,22 @@ ActiveRecord::Schema.define(version: 2020_10_05_010227) do
     t.integer "sake_brewery_id"
     t.string "sake_name"
     t.string "sake_img_id"
-    t.integer "tag_id"
     t.text "sake_text"
     t.integer "sake_degree"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["sake_brewery_id"], name: "index_posts_on_sake_brewery_id"
-    t.index ["tag_id"], name: "index_posts_on_tag_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "follow_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["follow_id"], name: "index_relationships_on_follow_id"
+    t.index ["user_id", "follow_id"], name: "index_relationships_on_user_id_and_follow_id", unique: true
+    t.index ["user_id"], name: "index_relationships_on_user_id"
   end
 
   create_table "sake_breweries", force: :cascade do |t|

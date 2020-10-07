@@ -21,7 +21,9 @@
 	</div>
 	<div class="row">
 		<div class="col-md-3 offset-md-8">
+			<% if @post.user == current_user %>
 			<%= link_to "削除", post_path(@post), method: :delete %>
+			<% end %>
 		</div>
 	</div>
 </div>
