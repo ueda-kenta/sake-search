@@ -22,6 +22,12 @@
 						<td><%= attachment_image_tag @post, :sake_img,  size: "300x300" %></td>
 					</tr>
 					<tr>
+						<td>タグ:<% @post.tags.each do |tag| %>
+							<%= tag.tag_name %>
+							<% end %>
+						</td>
+					</tr>
+					<tr>
 						<td>日本酒度:<%= @post.sake_degree %></td>
 						<td><div id="ajax_favorite"><%= render 'likes/like', post: @post %></td></div>
 					</tr>

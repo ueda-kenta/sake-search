@@ -1,7 +1,7 @@
 <div class="container">
 	<h1>新規投稿</h1>
 	<div class="row">
-		<%= form_with(model: @post) do |f| %>
+		<%= form_with(model: @post, local: true) do |f| %>
 		<%= render 'layouts/error_form', model: f.object %>
 		<div class="field">
 		<%= f.label :画像 %>

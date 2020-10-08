@@ -3,6 +3,9 @@
 		<h1>お気に入り一覧</h1>
 	</div>
 	<div class="row">
+		<% if @likes.empty? %>
+		<p>お気に入りはありません</p>
+		<% end %>
 		<% @likes.each do |like| %>
 <table class="sake-index-user_show">
 	<tbody>
