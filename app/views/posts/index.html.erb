@@ -7,7 +7,7 @@
 	<div class="row">
 		タグ一覧：
 		<% @tags.each do |tag| %>
-		<%= tag.tag_name %>(<%= tag.post_ids.count %>),
+		<%= link_to tag.tag_name,tag_path(tag.id) %>(<%= tag.post_ids.count %>),
 		<% end %>
 	</div>
 	<div class="row">
@@ -31,6 +31,12 @@
 						<% end %>
 					</td>
 				</tr>
+				<tr>
+						<td>タグ:<% post.tags.each do |tag| %>
+							<%= tag.tag_name %>,
+							<% end %>
+						</td>
+					</tr>
 				<tr>
 					<td>日本酒度:<%= post.sake_degree %></td>
 					<!-- いいね機能 -->
