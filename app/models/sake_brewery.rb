@@ -3,6 +3,9 @@ has_many :posts
 validates :brewery_name, presence: true, uniqueness: true
 validates :brewery_prefecture, presence: true
 
+geocoded_by :address
+  after_validation :geocode, if: :brewery_address_changed?
+
 enum brewery_prefecture:{
      北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
      茨城県:8,栃木県:9,群馬県:10,埼玉県:11,千葉県:12,東京都:13,神奈川県:14,
@@ -14,5 +17,9 @@ enum brewery_prefecture:{
      福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46,
      沖縄県:47
    }
+
+   def address
+     self.brewery_prefecture + self.brewery_address
+   end
 
 end

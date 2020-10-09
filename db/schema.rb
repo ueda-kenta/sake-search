@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_06_023208) do
+ActiveRecord::Schema.define(version: 2020_10_08_015004) do
 
   create_table "comments", force: :cascade do |t|
     t.text "comment"
@@ -36,13 +36,11 @@ ActiveRecord::Schema.define(version: 2020_10_06_023208) do
     t.integer "sake_brewery_id"
     t.string "sake_name"
     t.string "sake_img_id"
-    t.integer "tag_id"
     t.text "sake_text"
     t.integer "sake_degree"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["sake_brewery_id"], name: "index_posts_on_sake_brewery_id"
-    t.index ["tag_id"], name: "index_posts_on_tag_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -62,6 +60,8 @@ ActiveRecord::Schema.define(version: 2020_10_06_023208) do
     t.text "brewery_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
   end
 
   create_table "tag_posts", force: :cascade do |t|

@@ -6,6 +6,9 @@
 	</div>
 	<div class="row">
 		<div class="col-md-8">
+			<% if @relationships.empty? %>
+			フォローは０人です
+			<% end %>
 		<% @relationships.each do |relationship| %>
 		<table class="table">
 			<tbody>

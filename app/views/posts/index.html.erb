@@ -5,6 +5,12 @@
 		<p><%= link_to "投稿する", new_post_path %></p>
 	</div>
 	<div class="row">
+		タグ一覧：
+		<% @tags.each do |tag| %>
+		<%= tag.tag_name %>(<%= tag.post_ids.count %>),
+		<% end %>
+	</div>
+	<div class="row">
 		<% @posts.each do |post| %>
 		<table class="sake-index">
 			<tbody>

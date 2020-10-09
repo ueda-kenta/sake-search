@@ -4,22 +4,47 @@
 		<%= link_to "編集する", edit_sake_brewery_path(@sake_brewery) %>
 	</div>
 	<div class="row">
-		<div class= "col-md-4">
+		<div class= "col-md-6">
 			<table>
 				<tbody>
 					<tr>
-						<th>地図</th>
-						<th></th>
+						<th style="width:400px">地図</th>
 					</tr>
 					<tr>
-						<th>所在地</th>
-						<th><%= @sake_brewery.brewery_prefecture %>  <%= @sake_brewery.brewery_address %></th>
+						<td>
+							<div id ="map"></div>
+					    </td>
+					</tr>
+					<tr>
+						<th style="font-size:20px; padding-top:20px">
+							所在地:<%= @sake_brewery.brewery_prefecture %>  <%= @sake_brewery.brewery_address %>
+						</th>
 					</tr>
 				</tbody>
 			</table>
 		</div>
-		<div class="col-md-8">
+		<div class="col-md-6">
 			<%= render 'posts/sake_show', posts: @posts, user: @user %>
 		</div>
 	</div>
 </div>
+<!-- 地図表示 -->
+<script>
+let map
+
+function initMap(){
+	var test ={lat: <%= @sake_brewery.latitude %>, lng: <%= @sake_brewery.longitude %>};
+  geocoder = new google.maps.Geocoder()
+
+  map = new google.maps.Map(document.getElementById('map'), {
+  	zoom: 15,
+    center: test,
+  });
+
+  marker = new google.maps.Marker({
+    position:test,
+    map: map
+  });
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
