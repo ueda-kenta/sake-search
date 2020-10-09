@@ -1,5 +1,6 @@
 <div class="container">
 	<div class="row">
+		<%= link_to "戻る", :back %>
 		<h1><%= @sake_brewery.brewery_name %></h1>
 		<%= link_to "編集する", edit_sake_brewery_path(@sake_brewery) %>
 	</div>
@@ -24,7 +25,7 @@
 			</table>
 		</div>
 		<div class="col-md-6">
-			<%= render 'posts/sake_show', posts: @posts, user: @user %>
+			<%= render 'posts/sake_show', posts: @posts %>
 		</div>
 	</div>
 </div>

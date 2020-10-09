@@ -4,10 +4,20 @@
 			<div class="d-flex justify-content-around">
 			<% unless user_signed_in?  %>
 			<%= link_to "Sign in", new_user_session_path %>
-			<%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %>
+			<%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post %>
 			<%= link_to "Sign up", new_user_registration_path %>
 			<% end %>
 			<%if user_signed_in? %>
+			<div>
+				<%= form_tag(search_path, method: :get) do %>
+				　　<%= select_tag 'range' ,options_for_select([['---選択してください---', ''], ['日本酒名', '1'], ['酒蔵名', '2'],['ユーザー', '3']]) %>
+				　　<%= select_tag 'search', options_for_select([["完全一致","perfect_match"], ["部分一致","partial_match"]]) %>
+				　　<%= text_field_tag (:word) %>
+				　　<%= submit_tag "検索" %>
+
+				<% end %>
+
+			</div>
 			<%= link_to "タイムライン", posts_path %>
 			<%= link_to "マイページ", user_path(current_user) %>
 			<%= link_to "Sign out", destroy_user_session_path, :method => :delete%>

@@ -22,4 +22,14 @@ enum brewery_prefecture:{
      self.brewery_prefecture + self.brewery_address
    end
 
+   def self.search(search,word)
+    if search == "perfect_match"
+      @sake_breweies = SakeBrewery.where("brewery_name","#{word}")
+    elsif search == "partial_match"
+      @sake_breweries = SakeBrewery.where("brewery_name LIKE?","%#{word}%")
+    else
+      @sake_breweries = SakeBrewery.all
+    end
+  end
+
 end

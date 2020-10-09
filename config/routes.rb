@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'homes#top'
   get 'about' => 'homes#about'
+  get 'search' => 'searches#search'
   resources :posts, except: [:edit, :update] do
   	resource :likes, only: [:create, :destroy]
   	resources :comments, only: [:create, :destroy]
@@ -16,4 +17,5 @@ Rails.application.routes.draw do
   end
   resources :sake_breweries, only: [:show, :edit, :update]
   resources :relationships, only: [:create, :destroy]
+  resources :tags, only: [:show]
 end

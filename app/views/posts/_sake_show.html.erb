@@ -4,7 +4,7 @@
 		<tr>
 			<th>
 				投稿者:
-				<%= attachment_image_tag user, :profile_img, fallback: "no_img.png", size: "30x30" %>
+				<%= attachment_image_tag post.user, :profile_img, fallback: "no_img.png", size: "30x30" %>
 				<%= post.user.nickname %>
 			</th>
 		</tr>
