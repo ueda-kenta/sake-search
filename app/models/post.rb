@@ -38,7 +38,7 @@ class Post < ApplicationRecord
     if search == "perfect_match"
       @posts = Post.where("sake_name LIKE?","#{word}")
     elsif search == "partial_match"
-      @posts = Post.where("sake_name","%#{word}%")
+      @posts = Post.where("sake_name LIKE?","%#{word}%")
     else
       @posts = Post.all
     end

@@ -7,16 +7,16 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th>
+					<th style="width:20%">
 						酒名
 					</th>
-					<th>
+					<th style="width:10%">
 						酒蔵名
 					</th>
-					<th>
+					<th style="width:20%">
 						タグ
 					</th>
-					<th>
+					<th style="width:10%">
 						日本酒度
 					</th>
 					<th>
@@ -28,14 +28,14 @@
 				<% @posts.each do |post| %>
 				<tr>
 					<th>
-						<%= post.sake_name %>
+						<%=link_to post.sake_name, post_path(post) %>
 					</th>
 					<th>
 						<%= post.sake_brewery.brewery_name %>
 					</th>
 					<th>
 						<% post.tags.each do |tag| %>
-						<%= tag.tag_name %>
+						<%= tag.tag_name %>,
 						<% end %>
 					</th>
 					<th>
@@ -52,16 +52,16 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th>
+					<th style="width:13%">
 						酒蔵名
 					</th>
-					<th>
+					<th style="width:20%">
 						酒名
 					</th>
-					<th>
+					<th style="width:20%">
 						タグ
 					</th>
-					<th>
+					<th style="width:8%;text-align:center">
 						日本酒度
 					</th>
 					<th>
@@ -74,7 +74,7 @@
 					<% brewery.posts.each do |post| %>
 					<tr>
 						<th>
-							<%= brewery.brewery_name %>
+							<%= link_to brewery.brewery_name, sake_brewery_path(brewery) %>
 						</th>
 						<th>
 							<%= post.sake_name %>
@@ -84,7 +84,7 @@
 							<%= tag.tag_name %>
 							<% end %>
 						</th>
-						<th>
+						<th style="text-align: center">
 							<%= post.sake_degree %>
 						</th>
 						<th>
@@ -118,7 +118,7 @@
 					<tr>
 						<td style="width: 20%">
 								<%= attachment_image_tag user, :profile_img, fallback: "no_img.png", size: "30x30" %>
-							<%= user.nickname %>
+							<%= link_to user.nickname, user_path(user) %>
 						</td>
 						<td style="width: 40%">
 							<%= user.profile_text %>
