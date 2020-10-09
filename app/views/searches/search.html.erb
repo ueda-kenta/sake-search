@@ -1,0 +1,140 @@
+<div class="container">
+	<div class="row">
+		<h1>検索結果</h1>
+	</div>
+	<div class="row">
+		<% if @range == '1' %>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>
+						酒名
+					</th>
+					<th>
+						酒蔵名
+					</th>
+					<th>
+						タグ
+					</th>
+					<th>
+						日本酒度
+					</th>
+					<th>
+						感想
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @posts.each do |post| %>
+				<tr>
+					<th>
+						<%= post.sake_name %>
+					</th>
+					<th>
+						<%= post.sake_brewery.brewery_name %>
+					</th>
+					<th>
+						<% post.tags.each do |tag| %>
+						<%= tag.tag_name %>
+						<% end %>
+					</th>
+					<th>
+						<%= post.sake_degree %>
+					</th>
+					<th>
+						<%= post.sake_text %>
+					</th>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<% elsif @range == '2' %>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>
+						酒蔵名
+					</th>
+					<th>
+						酒名
+					</th>
+					<th>
+						タグ
+					</th>
+					<th>
+						日本酒度
+					</th>
+					<th>
+						感想
+					</th>
+				</tr>
+			</thead>
+				<tbody>
+					<% @sake_breweries.each do |brewery| %>
+					<% brewery.posts.each do |post| %>
+					<tr>
+						<th>
+							<%= brewery.brewery_name %>
+						</th>
+						<th>
+							<%= post.sake_name %>
+						</th>
+						<th>
+							<% post.tags.each do |tag| %>
+							<%= tag.tag_name %>
+							<% end %>
+						</th>
+						<th>
+							<%= post.sake_degree %>
+						</th>
+						<th>
+							<%= post.sake_text %>
+						</th>
+					</tr>
+					<% end %>
+					<% end %>
+				</tbody>
+			</table>
+			<% elsif @range == '3' %>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>
+							ニックネーム
+						</th>
+						<th>
+							紹介文
+						</th>
+						<th>
+							投稿数
+						</th>
+						<th>
+							<!-- フォローボタン欄 -->
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @users.each do |user| %>
+					<tr>
+						<td style="width: 20%">
+								<%= attachment_image_tag user, :profile_img, fallback: "no_img.png", size: "30x30" %>
+							<%= user.nickname %>
+						</td>
+						<td style="width: 40%">
+							<%= user.profile_text %>
+						</td>
+						<td>
+							<%= user.posts.count %>件
+						</td>
+						<td style="width: 20%">
+							<%= render 'relationships/follow_button', user: user %>
+						</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+			<% else %>
+			検索対象を選択してください
+			<% end %>
+		</div>
+	</div>
