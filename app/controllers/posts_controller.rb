@@ -10,10 +10,9 @@ class PostsController < ApplicationController
 		@post = Post.new(post_params)
 		@post.user_id = current_user.id
 		@post.sake_brewery_id = @sake_brewery.id
-
+		tag_list = params[:post][:tag_name].split(" ")
 			if @post.save
-				tag_list = params[:tag_names].to_s.split(nil)
-				@post.save_tags(tag_list)
+				@post.save_posts(tag_list)
 				flash[:notice] = "投稿しました"
 				redirect_to posts_path
 		    else
@@ -23,8 +22,7 @@ class PostsController < ApplicationController
 
 	def index
 		@posts = Post.all.page(params[:page]).per(9)
-		@tag_list = Tag.all
-	    @post = current_user.posts.new #よく分からん
+		@tags = Tag.all
 	end
 
 	def show
@@ -42,11 +40,7 @@ class PostsController < ApplicationController
 
 	private
 	def post_params
-		params.require(:post).permit(:user_id, :sake_brewery_id, :sake_name, :sake_img, :tag_id, :sake_text, :sake_degree, tag:[:tag_name], sake_brewery_attributes:[:id, :brewery_name, :brewery_prefecture, :brewery_address])
-	end
-
-	def tag_params
-		params.require(:tag).permit(:tag_names)
+		params.require(:post).permit(:user_id, :sake_brewery_id, :sake_name, :sake_img, :sake_text, :sake_degree, sake_brewery_attributes:[:id, :brewery_name, :brewery_prefecture, :brewery_address])
 	end
 
 end
