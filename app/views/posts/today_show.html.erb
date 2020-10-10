@@ -11,7 +11,7 @@
 		<div class="col-md-8">
 			<% @posts.each do |post| %>
 			<table>
-				<tbody>
+				<tbody class="img_width">
 					<%= render 'posts/sake_show_large', post: post %>
 				</tbody>
 			</table>
@@ -20,7 +20,7 @@
 		<div class="col-md-4">
 			<table>
 				<% @post_ranking.each.with_index(1) do |post,i| %>
-				<tbody>
+				<tbody class="img_width">
 					<tr>
 						<th>
 							第<%= i %>位

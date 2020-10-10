@@ -44,6 +44,11 @@ class PostsController < ApplicationController
 		@posts = Post.where(user_id: @follows).page(params[:page]).per(9)
 	end
 
+	def today_show
+		@posts = Post.order("RANDOM()").limit(1)
+		@post_ranking = Post.find(Like.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
+	end
+
 	private
 	def post_params
 		params.require(:post).permit(:user_id, :sake_brewery_id, :sake_name, :sake_img, :sake_text, :sake_degree, sake_brewery_attributes:[:id, :brewery_name, :brewery_prefecture, :brewery_address])

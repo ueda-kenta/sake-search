@@ -10,7 +10,7 @@
 <table class="sake-index-user_show">
 	<tbody>
 		<tr>
-			<th>投稿者: <%= attachment_image_tag @user, :profile_img_id, fallback: "no_img.png", size: "30x30" %><%= like.user.nickname %></th>
+			<th>投稿者: <%= attachment_image_tag @user, :profile_img, fallback: "no_img.png", size: "30x30" %><%= like.user.nickname %></th>
 		</tr>
 		<tr>
 			 <th>日本酒名:<%= link_to like.post.sake_name, post_path(like.id) %></th>

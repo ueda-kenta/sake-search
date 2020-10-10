@@ -18,6 +18,7 @@
 				<% end %>
 
 			</div>
+			<%= link_to "今日の一本", today_show_path %>
 			<%= link_to "タイムライン", posts_path %>
 			<%= link_to "マイページ", user_path(current_user) %>
 			<%= link_to "Sign out", destroy_user_session_path, :method => :delete%>

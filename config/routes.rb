@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get 'about' => 'homes#about'
   get 'search' => 'searches#search'
+  get 'today_show' => 'posts#today_show'
   resources :posts, except: [:edit, :update] do
   	resource :likes, only: [:create, :destroy]
   	resources :comments, only: [:create, :destroy]

@@ -13,7 +13,7 @@
 		</div>
 		<div class="field">
 		<%= f.label :タグ %>
-		<%= f.text_field :tag_name %>
+		<%= f.text_field :tag_name, placeholder: "美味しい 吟醸" %>※2個以上登録の際は半角開けて下さい
 		</div>
 		<%= f.fields_for :sake_brewery do |i| %> <%# 酒蔵テーブルに保存 %>
 		<div class="field">
@@ -27,7 +27,7 @@
 		<% end %>
 		<div class="field">
 		<%= f.label :日本酒度 %>
-		<%= f.number_field :sake_degree, value:0 %>
+		<%= f.number_field :sake_degree, placeholder: "不明の際は空白" %>
 		</div>
 		<div class="field">
 		<%= f.label :感想 %>

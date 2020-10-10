@@ -14,7 +14,7 @@
 						<td><%= attachment_image_tag post, :sake_img,  size: "300x300" %></td>
 					</tr>
 					<tr>
-						<td>タグ:<% post.tags.each do |tag| %>
+						<td style="width: 300px">タグ:<% post.tags.each do |tag| %>
 							<%= tag.tag_name %>
 							<% end %>
 						</td>
@@ -26,4 +26,4 @@
 					<tr><td>
 						<pre>酒蔵:<%= link_to post.sake_brewery.brewery_name, sake_brewery_path(post.sake_brewery.id) %>   所在地:<%= post.sake_brewery.brewery_prefecture %></pre>
 					</td></tr>
-					<tr><td><%= post.sake_text %></td></tr>
+					<tr><td ><%= post.sake_text %></td></tr>
