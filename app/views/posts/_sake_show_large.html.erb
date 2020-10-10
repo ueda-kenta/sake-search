@@ -1,0 +1,29 @@
+<!-- post/show, post/today_show(2箇所)で利用 -->
+					<tr>
+						<th>
+							投稿者:
+							<%= link_to(user_path(post.user)) do %>
+							<%= attachment_image_tag post.user, :profile_img_id, fallback: "no_img.png", size: "30x30" %><%= post.user.nickname %>
+							<% end %>
+						</th>
+					</tr>
+					<tr>
+						<th>日本酒名:<%= post.sake_name %></th>
+					</tr>
+					<tr>
+						<td><%= attachment_image_tag post, :sake_img,  size: "300x300" %></td>
+					</tr>
+					<tr>
+						<td>タグ:<% post.tags.each do |tag| %>
+							<%= tag.tag_name %>
+							<% end %>
+						</td>
+					</tr>
+					<tr>
+						<td>日本酒度:<%= post.sake_degree %></td>
+						<td><div id="ajax_favorite"><%= render 'likes/like', post: post %></td></div>
+					</tr>
+					<tr><td>
+						<pre>酒蔵:<%= link_to post.sake_brewery.brewery_name, sake_brewery_path(post.sake_brewery.id) %>   所在地:<%= post.sake_brewery.brewery_prefecture %></pre>
+					</td></tr>
+					<tr><td><%= post.sake_text %></td></tr>

@@ -1,9 +1,7 @@
 <div class="container">
 	<div class="row">
-		<%= link_to "フォローのみ", user_follow_timeline_path(current_user) %>
-		<h1>投稿一覧</h1>
-		<%= flash[:notice] %>
-		<p><%= link_to "投稿する", new_post_path %></p>
+		<%= link_to "全体タイムライン", posts_path %>
+		<h1>フォロータイムライン</h1>
 	</div>
 	<div class="row">
 		<%= render 'tags/tag_index', tags: @tags %>

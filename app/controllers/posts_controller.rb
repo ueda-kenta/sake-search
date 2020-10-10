@@ -38,6 +38,12 @@ class PostsController < ApplicationController
 		redirect_to posts_path
 	end
 
+	def follow_timeline
+		@tags = Tag.all
+		@follows = current_user.followings
+		@posts = Post.where(user_id: @follows).page(params[:page]).per(9)
+	end
+
 	private
 	def post_params
 		params.require(:post).permit(:user_id, :sake_brewery_id, :sake_name, :sake_img, :sake_text, :sake_degree, sake_brewery_attributes:[:id, :brewery_name, :brewery_prefecture, :brewery_address])

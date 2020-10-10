@@ -1,0 +1,4 @@
+タグ一覧：
+		<% tags.each do |tag| %>
+		<%= link_to tag.tag_name,tag_path(tag.id) %>(<%= tag.post_ids.count %>),
+		<% end %>
