@@ -1,9 +1,13 @@
 <div class="container">
 	<div class="row">
 		<%= link_to "フォローのみ", user_follow_timeline_path(current_user) %>
-		<h1>投稿一覧</h1>
-		<%= flash[:notice] %>
-		<p><%= link_to "投稿する", new_post_path %></p>
+		<h1 class="text-font">投稿一覧</h1>
+			<%= link_to(new_post_path, class: "submit-btn") do %>
+			<span class="fa-stack fa-lg">
+				<i class="fas fa-circle fa-stack-2x"></i>
+				<i class="fas fa-paper-plane fa-stack-1x fa-inverse"></i>
+			</span>
+			<% end %>
 	</div>
 	<div class="row">
 		<%= render 'tags/tag_index', tags: @tags %>
@@ -12,6 +16,6 @@
 		<%= render 'posts/timeline', posts: @posts %>
 	</div>
 	<div class="pagination">
-	<%= paginate @posts, theme: "twitter-bootstrap-4" %>
-    </div>
+		<%= paginate @posts, theme: "twitter-bootstrap-4" %>
+	</div>
 </div>

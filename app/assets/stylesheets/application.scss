@@ -17,8 +17,11 @@
  	height: 100px;
  	background-color: #FFF;
  }
- body{
-    background-color: rgba(0,0,68,0.6);
+ .text-font{
+    font-family: 'klee',sans-serif;
+ }
+ .top-color{
+     background-color: rgba(0,0,68,0.6);
  }
  .top-message{
     margin-top: 30px;
@@ -101,7 +104,15 @@
   border-color: #9ec34b;
   color: #FFF;
 }
+.submit-btn{
+    position: fixed;
+    bottom: 30px;
+    right: 200px;
+}
 // ボタン終わり
+.link-color{
+    color: #000;
+}
  .top-img{
     background-image: url("sake.jpg");
     background-size: cover;

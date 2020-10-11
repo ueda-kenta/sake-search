@@ -1,3 +1,4 @@
+<div class="top-color">
 <div class="container">
 	<div class="row">
 		<h1 class="top-message">Sake Searchとは</h1>
@@ -24,4 +25,21 @@
 			<p class="about-sub-text">運営のおすすめも紹介</p>
 		</div>
 	</div>
+	<div class="row">
+		<p class="sub-text">覗いてみましょう</p>
+	</div>
+	<div class="row">
+		<div class="col-md-2 offset-md-5">
+			<% unless user_signed_in? %>
+			<button class="login-btn btn-border">
+				<%= link_to "ゲストとしてログイン", users_guest_sign_in_path, method: :post, class: "login-btn" %>
+			</button>
+			<% else %>
+			<button class="login-btn btn-border">
+				<%= link_to "タイムライン", posts_path,class: "login-btn" %>
+			</button>
+			<% end %>
+		</div>
+	</div>
+</div>
 </div>

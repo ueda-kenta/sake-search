@@ -13,8 +13,7 @@ class PostsController < ApplicationController
 		tag_list = params[:post][:tag_name].split(" ")
 			if @post.save
 				@post.save_posts(tag_list)
-				flash[:notice] = "投稿しました"
-				redirect_to posts_path
+				redirect_to posts_path, notice: '投稿しました'
 		    else
 		    	render "new"
 		    end

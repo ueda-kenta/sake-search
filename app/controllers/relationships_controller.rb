@@ -8,7 +8,7 @@ class RelationshipsController < ApplicationController
     # redirect_back(fallback_location: posts_path)
     respond_to do |format|
       if  following.save
-        flash[:notice] = "フォローしました"
+        notice: "フォローしました"
         format.html { redirect_back(fallback_location: posts_path)}
         # format.js { redirect_to posts_path}
       end
@@ -21,7 +21,7 @@ class RelationshipsController < ApplicationController
     # redirect_back(fallback_location: posts_path)
     respond_to do |format|
       if  following.destroy
-        flash[:danger] = "フォローを解除しました"
+        danger:  "フォローを解除しました"
         format.html { redirect_back(fallback_location: posts_path)}
         # format.js { redirect_to posts_path}
       end
