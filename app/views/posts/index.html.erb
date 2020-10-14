@@ -1,0 +1,16 @@
+<div class="container">
+	<div class="row">
+		<h1 class="text-font">投稿一覧</h1>
+		<%= link_to "フォローのみ", user_follow_timeline_path(current_user), class: "btn-icon", style: "text-decoration: none;" %>
+		<%= render 'posts/post_button' %>
+	</div>
+	<div class="row">
+		<%= render 'tags/tag_index', tags: @tags %>
+	</div>
+	<div class="row">
+		<%= render 'posts/timeline', posts: @posts %>
+	</div>
+	<div class="pagination">
+		<%= paginate @posts, theme: "twitter-bootstrap-4" %>
+	</div>
+</div>

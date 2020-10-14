@@ -12,5 +12,43 @@
 //
 //= require rails-ujs
 //= require activestorage
+//= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require jquery3
+//= require popper
+//= require bootstrap-sprockets
+$(function() {
+  $('.top-message').hide().fadeIn(1000);
+ 
+});
+
+$(function() {
+  $('.top-img').hide().fadeIn(3000);
+ 
+});
+// 画面に入るとフェードイン
+$(function(){
+	$(window).scroll(function (){
+		$('.fadein').each(function(){
+			var elemPos = $(this).offset().top;
+			var scroll = $(window).scrollTop();
+			var windowHeight = $(window).height();
+			if (scroll > elemPos - windowHeight + 200){
+				$(this).addClass('scrollin');
+			}
+		});
+	});
+});
+
+$(function(){
+    $(".alert").fadeOut(3000);
+  });
+
+$(function(){
+    $(".alert-notice").fadeOut(3000);
+  });
+
+
+
+

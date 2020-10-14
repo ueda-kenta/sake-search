@@ -1,0 +1,13 @@
+<div id = "comments_area">
+	<h3>コメント一覧（全<%= post.comments.count %>件）</h3>
+	<% post.comments.each do |comment| %>
+	<table class="table">
+		<tbody>
+			<tr>
+				<td><%= attachment_image_tag @user, :profile_img_id, fallback: "no_img.png", size: "30x30" %><%= comment.user.nickname %></td>      <td><%= comment.comment %></td>
+				<td><%=link_to "削除", post_comment_path(comment.post_id, comment), method: :delete, remote: true %></td>
+			</tr>
+		</tbody>
+	</table>
+	<% end %>
+</div>

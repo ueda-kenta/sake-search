@@ -1,0 +1,46 @@
+<div class="top-color">
+<div class="container">
+	<div class="row">
+		<h1 class="top-message">Sake Searchとは</h1>
+	</div>
+	<div class="row">
+		<p class="about-text">自分の飲んだ日本酒を共有,新たな日本酒を発見できるSNSです</p>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<p class="about-main-text">日本酒を投稿</p>
+			<p class="about-sub-text">おすすめの日本酒を投稿</p>
+			<p class="about-sub-text">みんなに共有</p>
+		</div>
+		<div class="col-md-6 about-img">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6 about-img-2">
+		</div>
+		<div class="col-md-6">
+			<p class="about-main-text">新たな１本を探す</p>
+			<p class="about-sub-text">自分の好みに合わせて検索</p>
+			<p class="about-sub-text">気に入ったものはブックマーク</p>
+			<p class="about-sub-text">運営のおすすめも紹介</p>
+		</div>
+	</div>
+	<div class="row">
+		<p class="sub-text">覗いてみましょう</p>
+	</div>
+	<div class="row">
+		<div class="col-md-2 offset-md-5">
+			<% unless user_signed_in? %>
+			<button class="login-btn btn-border">
+				<%= link_to "ゲストとしてログイン", users_guest_sign_in_path, method: :post, class: "login-btn" %>
+			</button>
+			<% else %>
+			<div class="login-btn fadein scrollin ">
+					<%= link_to(posts_path, class: "login-btn btn-top", style: "text-decoration: none;") do %>
+					<i class="fa fa-chevron-circle-right"></i> タイムライン
+					<% end %>
+			<% end %>
+		</div>
+	</div>
+</div>
+</div>

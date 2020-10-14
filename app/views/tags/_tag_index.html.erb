@@ -1,0 +1,6 @@
+タグ一覧：
+		<% tags.each do |tag| %>
+		<div class="ribbon">
+		<%= link_to tag.tag_name,tag_path(tag.id), class: "tag-style", style: "text-decoration: none;"%>(<%= tag.post_ids.count %>)
+	    </div>
+		<% end %>
