@@ -8,7 +8,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<h1 class="sub-message">Sake Searchは新たな日本酒と出会えるSNSです</h1>
+			<h1 class="sub-message fadein scrollin">Sake Searchは新たな日本酒と出会えるSNSです</h1>
 		</div>
 		<div class="row">
 			<p class="sub-text">覗いてみましょう</p>
@@ -16,24 +16,32 @@
 		<div class="row">
 			<div class="col-md-2 offset-md-5">
 				<% unless user_signed_in? %>
-				<button class="login-btn btn-border">
-					<%= link_to "ゲストとしてログイン", users_guest_sign_in_path, method: :post, class: "login-btn" %>
-				</button>
+				<div class="login-btn fadein scrollin">
+					<%= link_to(users_guest_sign_in_path,method: :post, class: "login-btn btn-top", style: "text-decoration: none;") do %>
+					<i class="fa fa-chevron-circle-right"></i>
+					ゲストログイン
+					<% end %>
+				</div>
 				<% else %>
-				<button class="login-btn btn-border">
-					<%= link_to "タイムライン", posts_path,class: "login-btn" %>
-				</button>
+				<div class="login-btn fadein scrollin ">
+					<%= link_to(posts_path, class: "login-btn btn-top", style: "text-decoration: none;") do %>
+					<i class="fa fa-chevron-circle-right"></i> タイムライン
+					<% end %>
+
+				</div>
 				<% end %>
 			</div>
 		</div>
 		<div class="row">
-			<p class="sub-text">詳しく知る</p>
+			<p class="sub-text fadein scrollin">詳しく知る</p>
 		</div>
 		<div class="row">
 			<div class="col-md-2 offset-md-5">
-				<button class="login-btn btn-border">
-					<%= link_to "About", about_path, class: "login-btn" %>
-				</button>
+				<div class="login-btn">
+					<%= link_to(about_path, class: "login-btn btn-top fadein scrollin", style: "text-decoration: none; margin-bottom:20px;") do %>
+					<i class="fa fa-chevron-circle-right "></i> Aboutへ
+					<% end %>
+				</div>
 			</div>
 		</div>
 	</div>

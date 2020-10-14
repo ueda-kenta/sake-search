@@ -1,13 +1,18 @@
 <div class="container">
 	<div class="row">
-		<%= link_to "全体タイムライン", posts_path %>
-		<h1>フォロータイムライン</h1>
+		<h1 class="text-font">フォロータイムライン</h1>
+		<%= link_to "全体タイムライン", posts_path, class: "btn-icon", style: "text-decoration: none;" %>
+		<%= render 'posts/post_button' %>
 	</div>
 	<div class="row">
 		<%= render 'tags/tag_index', tags: @tags %>
 	</div>
 	<div class="row">
+		<% if @posts.empty? %>
+		<div class="nil-post text-font">フォローがいません</div>
+		<% else %>
 		<%= render 'posts/timeline', posts: @posts %>
+		<% end %>
 	</div>
 	<div class="pagination">
 	<%= paginate @posts, theme: "twitter-bootstrap-4" %>

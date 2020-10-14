@@ -3,7 +3,7 @@
 
       <% if current_user.following?(user) %>
 
-        <%= form_with url: relationship_path(user.id), method: :delete, local: true do |f| %>
+        <%= form_with url: relationship_path(user.id), method: :delete, remote: true do |f| %>
           <%= hidden_field_tag :follow_id, user.id %>
           <%= f.submit 'フォロー外す', class: 'btn btn-danger btn-block' %>
         <% end %>
@@ -11,7 +11,7 @@
 
       <% else %>
 
-      <%= form_with model: user, url: relationships_path, method: :post, local: true do |f| %>
+      <%= form_with model: user, url: relationships_path, method: :post, remote: true do |f| %>
       <%= hidden_field_tag :follow_id, user.id %>
           <%= f.submit 'フォローする', class: 'btn btn-primary btn-block' %>
         <% end %>

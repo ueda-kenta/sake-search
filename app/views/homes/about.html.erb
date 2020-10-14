@@ -35,9 +35,10 @@
 				<%= link_to "ゲストとしてログイン", users_guest_sign_in_path, method: :post, class: "login-btn" %>
 			</button>
 			<% else %>
-			<button class="login-btn btn-border">
-				<%= link_to "タイムライン", posts_path,class: "login-btn" %>
-			</button>
+			<div class="login-btn fadein scrollin ">
+					<%= link_to(posts_path, class: "login-btn btn-top", style: "text-decoration: none;") do %>
+					<i class="fa fa-chevron-circle-right"></i> タイムライン
+					<% end %>
 			<% end %>
 		</div>
 	</div>

@@ -11,8 +11,8 @@
  * It is generally better to create a new file per style scope.
  *
  */
+ // text-decoration: none; 直書きじゃないと効かない？
  @import "bootstrap";
-
  header{
  	height: 100px;
  	background-color: #FFF;
@@ -88,11 +88,11 @@
 .btn-border {
   display: inline-block;
   max-height: 60px;
-  max-width: 300px;
+  width: 400px;
   text-align: left;
-  border: 2px solid #9ec34b;
+  border: 2px solid ;
   font-size: 16px;
-  color: #9ec34b;
+  color: #33CCFF;
   text-decoration: none;
   font-weight: bold;
   border-radius: 4px;
@@ -100,16 +100,63 @@
 }
 
 .btn-border:hover {
-  background-color: #9ec34b;
-  border-color: #9ec34b;
+  background-color: #33CCFF ;
+  border-color: #33CCFF ;
   color: #FFF;
+}
+.btn-top{
+  position: relative;
+  display: block;
+  height: 35px;
+  width: 200px;
+  text-decoration: none;
+  background: #fdc689;
+  color: #fff;
+  line-height: 37px;
+  text-align: center;
+  border-radius: 3px;
+  box-shadow: 1px 2px 4px #d4842c;
+}
+.btn-top:active{
+  -ms-transform: translateY(2px);
+  -webkit-transform: translateY(2px);
+  transform: translateY(2px);
+  box-shadow:none;
 }
 .submit-btn{
     position: fixed;
     bottom: 30px;
     right: 200px;
 }
+.btn-icon{
+  margin-left: 15px;
+  display: inline-block;
+  max-width: 180px;
+  max-height: 40px;
+  text-align: center;
+  background-color: #33CCFF;
+  font-size: 16px;
+  color: #FFF;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px;
+  border-radius: 4px;
+  position: relative;
+}
+.btn-icon:hover{
+  opacity: 0.8;
+}
+
 // ボタン終わり
+.fadein {
+    opacity : 0.1;
+    transform : translate(0, 50px);
+    transition : all 500ms;
+}
+.fadein.scrollin {
+    opacity : 1;
+    transform : translate(0, 0);
+}
 .link-color{
     color: #000;
 }
@@ -150,6 +197,52 @@
 .search-window{
 	margin-top: 35px;
 }
+.ribbon{
+    display: inline-block;
+  position: relative;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  padding: 0 20px 0 10px;
+  font-size: 12px;
+  background: #ffc668;
+  color: #FFF;
+  box-sizing: border-box;
+}
+.ribbon:after {
+  position: absolute;
+  content: '';
+  width: 0px;
+  height: 0px;
+  z-index: 1;
+}
+.ribbon:after {
+  top: 0;
+  right: 0;
+  border-width: 17px 10px 20px 0px;
+  border-color: transparent #fff transparent transparent;
+  border-style: solid;
+}
+.tag-style{
+    color:white;
+}
+.nil-post{
+    margin-top: 30px;
+    font-size: 30px;
+
+}
+ .alert{
+    height:40px;
+   background-color: #FF0000;
+   color: white;
+   text-align: center;
+ }
+ .alert-notice {
+   height:40px;
+   background-color: #00DD00;
+   color: white;
+   text-align: center;
+ }
 // メニューバー
 @mixin vertical-align($position){
 	position:$position;
