@@ -1,0 +1,35 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-8">
+			<h1>今日の一本</h1>
+		</div>
+		<div class="col-md-4">
+			<h1>ランキング</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-8">
+			<% @posts.each do |post| %>
+			<table>
+				<tbody class="img_width">
+					<%= render 'posts/sake_show_large', post: post %>
+				</tbody>
+			</table>
+			<% end %>
+		</div>
+		<div class="col-md-4">
+			<table>
+				<% @post_ranking.each.with_index(1) do |post,i| %>
+				<tbody class="img_width">
+					<tr>
+						<th>
+							第<%= i %>位
+						</th>
+					</tr>
+					<%= render 'posts/sake_show_large', post: post %>
+				</tbody>
+				<% end %>
+			</table>
+		</div>
+	</div>
+</div>

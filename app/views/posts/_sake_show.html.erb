@@ -1,10 +1,11 @@
+<!-- user/showで使用 -->
 <% posts.each do |post| %>
 <table class="sake-index-user_show">
 	<tbody>
-		<tr>
+		<tr style="width: 30px;">
 			<th>
 				投稿者:
-				<%= attachment_image_tag post.user, :profile_img, fallback: "no_img.png", size: "30x30" %>
+				<%= attachment_image_tag post.user, :profile_img, fallback: "no_img.png", size: "30x30", style: "margin: 0 auto;" %>
 				<%= post.user.nickname %>
 			</th>
 		</tr>
@@ -20,11 +21,17 @@
 
 		</tr>
 		<tr>
-			<td>日本酒度:<%= post.sake_degree %></td>
+			<td>日本酒度:
+				<%if post.sake_degree.nil? %>
+				不明
+				<% else %>
+				<%= post.sake_degree %>
+				<% end %>
+				</td>
 			<td><%= render 'likes/like', post: post %></td>
 		</tr>
 		<tr>
-			<td><%= post.sake_text %></td>
+			<td style="width: 200px;"><%= post.sake_text %></td>
 		</tr>
 	</tbody>
 </table>

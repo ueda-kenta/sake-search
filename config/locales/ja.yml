@@ -4,6 +4,7 @@ ja:
       post:
       user:
       sake_brewery: 酒蔵
+
     attributes:
       post:
         sake_name: 酒名
@@ -14,6 +15,11 @@ ja:
         first_name: 名
         nickname: ニックネーム
         profile_text: 紹介文
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        remember_me: 次回から自動的にログイン
+
       sake_brewery:
         brewery_name: 酒蔵名
         brewery_prefecture: 酒蔵所在地

@@ -1,55 +1,16 @@
 <div class="container">
 	<div class="row">
-		<h1>投稿一覧</h1>
-		<%= flash[:notice] %>
-		<p><%= link_to "投稿する", new_post_path %></p>
+		<h1 class="text-font">投稿一覧</h1>
+		<%= link_to "フォローのみ", user_follow_timeline_path(current_user), class: "btn-icon", style: "text-decoration: none;" %>
+		<%= render 'posts/post_button' %>
 	</div>
 	<div class="row">
-		タグ一覧：
-		<% @tags.each do |tag| %>
-		<%= link_to tag.tag_name,tag_path(tag.id) %>(<%= tag.post_ids.count %>),
-		<% end %>
+		<%= render 'tags/tag_index', tags: @tags %>
 	</div>
 	<div class="row">
-		<% @posts.each do |post| %>
-		<table class="sake-index">
-			<tbody>
-				<tr>
-					<th>投稿者: 
-						<%= link_to(user_path(post.user),"data-turbolinks": false) do %>
-						<%= attachment_image_tag post.user, :profile_img, fallback: "no_img.png", size: "30x30" %><%= post.user.nickname %>
-						<% end %>
-					</th>
-				</tr>
-				<tr>
-					<th>日本酒名:<%= link_to post.sake_name, post_path(post.id) %></th>
-				</tr>
-				<tr>
-					<td>
-						<%= link_to(post_path(post.id)) do %>
-						<%= attachment_image_tag post, :sake_img,  size: "300x300" %>
-						<% end %>
-					</td>
-				</tr>
-				<tr>
-						<td>タグ:<% post.tags.each do |tag| %>
-							<%= tag.tag_name %>,
-							<% end %>
-						</td>
-					</tr>
-				<tr>
-					<td>日本酒度:<%= post.sake_degree %></td>
-					<!-- いいね機能 -->
-					<td><%= render 'likes/like', post: post %></td>
-				</tr>
-				<tr>
-					<td><%= post.sake_text %></td>
-				</tr>
-			</tbody>
-		</table>
-		<% end %>
+		<%= render 'posts/timeline', posts: @posts %>
 	</div>
 	<div class="pagination">
-	<%= paginate @posts, theme: "twitter-bootstrap-4" %>
-    </div>
+		<%= paginate @posts, theme: "twitter-bootstrap-4" %>
+	</div>
 </div>

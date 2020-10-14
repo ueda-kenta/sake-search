@@ -13,8 +13,7 @@ class PostsController < ApplicationController
 		tag_list = params[:post][:tag_name].split(" ")
 			if @post.save
 				@post.save_posts(tag_list)
-				flash[:notice] = "投稿しました"
-				redirect_to posts_path
+				redirect_to posts_path, notice: '投稿しました'
 		    else
 		    	render "new"
 		    end
@@ -35,7 +34,18 @@ class PostsController < ApplicationController
 	def destroy
 		@post = Post.find(params[:id])
 		@post.destroy
-		redirect_to posts_path
+		redirect_to posts_path, alert: '投稿を削除しました'
+	end
+
+	def follow_timeline
+		@tags = Tag.all
+		@follows = current_user.followings
+		@posts = Post.where(user_id: @follows).page(params[:page]).per(9)
+	end
+
+	def today_show
+		@posts = Post.order("RANDOM()").limit(1)
+		@post_ranking = Post.find(Like.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
 	end
 
 	private

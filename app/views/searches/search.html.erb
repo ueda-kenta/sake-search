@@ -39,7 +39,11 @@
 						<% end %>
 					</th>
 					<th>
+						<% if post.sake_degree.nil? %>
+						不明
+						<% else %>
 						<%= post.sake_degree %>
+						<% end %>
 					</th>
 					<th>
 						<%= post.sake_text %>
