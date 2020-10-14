@@ -77,3 +77,6 @@ gem "bootstrap4-kaminari-views"
 gem "geocoder"
 
 gem "dotenv-rails"
+group :production do
+  gem 'mysql2'
+end
