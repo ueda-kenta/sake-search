@@ -243,6 +243,12 @@
    color: white;
    text-align: center;
  }
+ .new-page{
+  width: 300px;
+   margin-left: 35%;
+   background-color: #D7EEFF;
+   font-size: 20px;
+ }
 // メニューバー
 @mixin vertical-align($position){
 	position:$position;
