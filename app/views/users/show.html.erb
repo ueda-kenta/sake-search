@@ -2,7 +2,6 @@
 	<div class="row">
 		<%= link_to "タイムラインへ", posts_path, class: "btn btn-success",style: "height:40px;" %>
 		<h1 class="main_title text-font">ユーザー情報</h1>
-		<%= flash[:notice] %>
 	</div>
 	<div class="row">
 		<div class="col-md-4 profile_img">
@@ -29,13 +28,13 @@
 						<th>ニックネーム</th>
 						<td><%= @user.nickname %></td>
 					</tr>
+					<% end %>
 					<tr>
 						<th>フォロー</th>
 						<td>
 							<%= link_to @user.relationships.count, user_follow_index_path(@user) %>人
 						</td>
 					</tr>
-					<% end %>
 					<tr>
 						<th>お気に入り</th>
 						<td><%= link_to @user.likes.count, user_like_path(@user) %>件</td>

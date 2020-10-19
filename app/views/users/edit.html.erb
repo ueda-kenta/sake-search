@@ -1,21 +1,23 @@
 <div class="container">
 	<div class="row">
-		<h1>編集ページ</h1>
+		<h1 class="text-font">編集ページ</h1>
 	</div>
 	<div class="row">
-		<%= form_for(@user) do |f| %>
-		<%= render 'layouts/error_form', model: f.object %>
-		<%= f.label :プロフィール画像 %>
-		<%= f.attachment_field :profile_img %><br>
-		<%= f.label :姓 %>
-		<%= f.text_field :last_name, autofocus: true %><br>
-		<%= f.label :名 %>
-		<%= f.text_field :first_name, autofocus: true %><br>
-		<%= f.label :ニックネーム %>
-		<%= f.text_field :nickname, autofocus: true %><br>
-		<%= f.label :紹介文 %>
-		<%= f.text_area :profile_text, autofocus: true %><br>
-		<%= f.submit "変更を保存" %>
-		<% end %>
+		<div class="edit-page">
+			<%= form_for(@user) do |f| %>
+			<%= render 'layouts/error_form', model: f.object %>
+			<%= f.label :プロフィール画像 %>
+			<%= f.attachment_field :profile_img %><br>
+			<%= f.label :姓 %>
+			<%= f.text_field :last_name, autofocus: true %><br>
+			<%= f.label :名 %>
+			<%= f.text_field :first_name, autofocus: true %><br>
+			<%= f.label :ニックネーム %>
+			<%= f.text_field :nickname, autofocus: true %><br>
+			<%= f.label :紹介文 %>
+			<%= f.text_area :profile_text, autofocus: true %><br>
+			<%= f.submit "変更を保存", class: "btn btn-primary style: margin-left: 30px;" %>
+			<% end %>
+		</div>
 	</div>
 </div>

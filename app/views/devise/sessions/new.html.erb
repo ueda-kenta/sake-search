@@ -23,7 +23,7 @@
     <%= f.submit "ログイン", class: "btn btn-primary" %>
   </div>
 <% end %>
-
+<%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "login-btn btn-top", style: "text-decoration: none; font-size:18px; margin-top:10px;" %>
 <%= render "devise/shared/links" %>
-<%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %>
+
 </div>
