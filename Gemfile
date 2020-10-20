@@ -80,6 +80,11 @@ gem "geocoder"
 
 gem "whenever", :require => false
 
+gem 'capistrano'
+gem 'capistrano-rails'
+gem 'capistrano3-puma'
+gem 'capistrano-rbenv'
+
 gem "dotenv-rails"
 group :production do
   gem 'mysql2'
