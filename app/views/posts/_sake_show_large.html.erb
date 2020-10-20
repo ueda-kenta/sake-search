@@ -20,7 +20,13 @@
 						</td>
 					</tr>
 					<tr>
-						<td>日本酒度:<%= post.sake_degree %></td>
+						<td>日本酒度:
+							<% if post.sake_degree.nil? %>
+							不明
+							<% else %>
+							<%= post.sake_degree %>
+							<% end %>
+						</td>
 						<td><div id="ajax_favorite"><%= render 'likes/like', post: post %></td></div>
 					</tr>
 					<tr><td>

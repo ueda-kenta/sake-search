@@ -5,6 +5,7 @@
 		<%= render 'layouts/error_form', model: f.object %>
 		<div class="field">
 		<%= f.label :画像 %>
+		<%= attachment_image_tag @post, :sake_img, fallback: "no_img.png", id: "item-img",size:"250x250" %>
 		<%= f.attachment_field :sake_img %>
 		</div>
 		<div class="field">
@@ -37,3 +38,20 @@
 		<% end %>
 	</div>
 </div>
+
+<script>
+	$(document).on("turbolinks:load", function(){
+  function readURL(input) {
+    if(input.files && input.files[0]){
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $('#item-img').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $("#post_sake_img").change(function(){
+    readURL(this);
+  });
+});
+</script>
