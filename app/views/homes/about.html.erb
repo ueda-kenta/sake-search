@@ -22,7 +22,7 @@
 			<p class="about-main-text">新たな１本を探す</p>
 			<p class="about-sub-text">自分の好みに合わせて検索</p>
 			<p class="about-sub-text">気に入ったものはブックマーク</p>
-			<p class="about-sub-text">運営のおすすめも紹介</p>
+			<p class="about-sub-text">ランダムな日本酒を表示する機能</p>
 		</div>
 	</div>
 	<div class="row">
@@ -31,11 +31,14 @@
 	<div class="row">
 		<div class="col-md-2 offset-md-5">
 			<% unless user_signed_in? %>
-			<button class="login-btn btn-border">
-				<%= link_to "ゲストとしてログイン", users_guest_sign_in_path, method: :post, class: "login-btn" %>
-			</button>
-			<% else %>
-			<div class="login-btn fadein scrollin ">
+				<div class="login-btn fadein scrollin">
+					<%= link_to(users_guest_sign_in_path,method: :post, class: "login-btn btn-top", style: "text-decoration: none;") do %>
+					<i class="fa fa-chevron-circle-right"></i>
+					ゲストログイン
+					<% end %>
+				</div>
+				<% else %>
+				<div class="login-btn fadein scrollin ">
 					<%= link_to(posts_path, class: "login-btn btn-top", style: "text-decoration: none;") do %>
 					<i class="fa fa-chevron-circle-right"></i> タイムライン
 					<% end %>

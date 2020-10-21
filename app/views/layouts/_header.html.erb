@@ -8,7 +8,7 @@
 			<div class="search-window">
 				<%= form_tag(search_path, method: :get) do %>
 				　　<%= select_tag 'range' ,options_for_select([['---選択してください---', ''], ['日本酒名', '1'], ['酒蔵名', '2'],['ユーザー', '3']]) %>
-				　　<%= select_tag 'search', options_for_select([["完全一致","perfect_match"], ["部分一致","partial_match"]]) %>
+				　　<%= select_tag 'search', options_for_select([["部分一致","partial_match"],["完全一致","perfect_match"]]) %>
 				　　<%= text_field_tag (:word) %>
 				　　<%= submit_tag "検索" %>
 				<% end %>
@@ -27,7 +27,7 @@
 					<li><%= link_to "トップ", root_path %></li>
 					<li><%= link_to "アバウト", about_path %></li>
 					<li><%= link_to "タイムライン", posts_path %></li>
-					<li><%= link_to "今日の一本", today_show_path %></li>
+					<li><%= link_to "新たな一本", today_show_path %></li>
 					<li><%= link_to "マイページ", user_path(current_user) %></li>
 					<li><%= link_to "ログアウト", destroy_user_session_path %></li>
 					<% end %>

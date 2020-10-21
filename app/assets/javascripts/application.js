@@ -12,12 +12,11 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require jquery_ujs
 //= require turbolinks
-//= require_tree .
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+//= require_tree .
 $(function() {
   $('.top-message').hide().fadeIn(1000);
  

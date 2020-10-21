@@ -1,3 +1,4 @@
+<div class="new-page">
 <h2>新規登録</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -31,8 +32,9 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "新規登録" %>
+    <%= f.submit "新規登録", class: "btn btn-primary" %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>

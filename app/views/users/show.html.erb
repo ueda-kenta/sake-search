@@ -2,7 +2,6 @@
 	<div class="row">
 		<%= link_to "タイムラインへ", posts_path, class: "btn btn-success",style: "height:40px;" %>
 		<h1 class="main_title text-font">ユーザー情報</h1>
-		<%= flash[:notice] %>
 	</div>
 	<div class="row">
 		<div class="col-md-4 profile_img">
@@ -10,32 +9,40 @@
 			<table class="table">
 				<tbody>
 					<tr>
-						<%= render 'relationships/follow_button', user: @user %>
-					</tr>
-					<% if @user == current_user %>
-					<tr>
-						<td>
-							<% if @user.nickname != "ゲスト" %>
-							<%= link_to "編集", edit_user_path(@user), class: "btn btn-primary btn-block", style: "margin-left: 60px;" %>
-							<% end %>
+						<td colspan="2">
+							<div id="follow_button_<%= @user.id %>">
+								<%= render 'relationships/follow_button', user: @user %>
+							</div>
 						</td>
 					</tr>
-					<tr>
-						<th>名前</th>
-						<td><%= @user.last_name + " " + @user.first_name%></td>
-					</tr>
-					<% else %>
-					<tr>
-						<th>ニックネーム</th>
-						<td><%= @user.nickname %></td>
-					</tr>
+					<% if @user == current_user %>
+						<tr>
+							<td colspan="2">
+								<% if @user.nickname != "ゲスト" %>
+								<%= link_to "編集", edit_user_path(@user), class: "btn btn-primary btn-block", style: "margin-left: 60px;" %>
+								<% end %>
+							</td>
+						</tr>
+						<tr>
+							<th>名前</th>
+							<td><%= @user.last_name + " " + @user.first_name%></td>
+						</tr>
+						<tr>
+							<th>ニックネーム</th>
+							<td><%= @user.nickname %></td>
+						</tr>
+						<% else %>
+						<tr>
+							<th>ニックネーム</th>
+							<td><%= @user.nickname %></td>
+						</tr>
+					<% end %>
 					<tr>
 						<th>フォロー</th>
 						<td>
 							<%= link_to @user.relationships.count, user_follow_index_path(@user) %>人
 						</td>
 					</tr>
-					<% end %>
 					<tr>
 						<th>お気に入り</th>
 						<td><%= link_to @user.likes.count, user_like_path(@user) %>件</td>
@@ -50,6 +57,7 @@
 		<div class="col-md-8">
 			<h3 class="text-font">投稿一覧</h3>
 			<%= render 'posts/sake_show', posts: @posts, user: @user %>
+			<%= paginate @posts, theme: "twitter-bootstrap-4" %>
 		</div>
 	</div>
 	<div class="row">

@@ -195,7 +195,8 @@
 	width: 300px;
 }
 .search-window{
-	margin-top: 35px;
+  padding-top: 35px;
+  background-color: #FFDBC9;
 }
 .ribbon{
     display: inline-block;
@@ -242,6 +243,16 @@
    background-color: #00DD00;
    color: white;
    text-align: center;
+ }
+ .new-page{
+  width: 300px;
+   margin-left: 35%;
+   background-color: #D7EEFF;
+   font-size: 20px;
+ }
+ .edit-page{
+  margin: 0 auto;
+  background-color: #D7EEFF;
  }
 // メニューバー
 @mixin vertical-align($position){

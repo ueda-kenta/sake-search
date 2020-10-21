@@ -2,7 +2,9 @@
 	<div class="row">
 		<%= link_to "戻る", :back, class: "btn btn-success", style: "height: 35px" %>
 		<h1><%= @sake_brewery.brewery_name %></h1>
+		<% if current_user.email == "admin@admin" %>
 		<%= link_to "編集する", edit_sake_brewery_path(@sake_brewery) %>
+		<% end %>
 	</div>
 	<div class="row">
 		<div class= "col-md-6">
@@ -26,6 +28,7 @@
 		</div>
 		<div class="col-md-6">
 			<%= render 'posts/sake_show', posts: @posts %>
+			<%= paginate @posts, theme: 'twitter-bootstrap-4'%>
 		</div>
 	</div>
 </div>

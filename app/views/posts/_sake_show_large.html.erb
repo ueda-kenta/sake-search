@@ -3,15 +3,19 @@
 						<th>
 							投稿者:
 							<%= link_to(user_path(post.user)) do %>
-							<%= attachment_image_tag post.user, :profile_img_id, fallback: "no_img.png", size: "30x30" %><%= post.user.nickname %>
+							<%= attachment_image_tag post.user, :profile_img, fallback: "no_img.png", size: "30x30", style: "margin: 0 auto;" %><%= post.user.nickname %>
 							<% end %>
 						</th>
 					</tr>
 					<tr>
-						<th>日本酒名:<%= post.sake_name %></th>
+						<th>日本酒名:<%= link_to post.sake_name, post_path(post.id) %></th>
 					</tr>
 					<tr>
-						<td><%= attachment_image_tag post, :sake_img,  size: "300x300" %></td>
+						<td>
+							<%= link_to post_path(post.id) do %>
+							<%= attachment_image_tag post, :sake_img,  size: "300x300" %>
+							<% end %>
+						</td>
 					</tr>
 					<tr>
 						<td style="width: 300px">タグ:<% post.tags.each do |tag| %>
@@ -20,7 +24,13 @@
 						</td>
 					</tr>
 					<tr>
-						<td>日本酒度:<%= post.sake_degree %></td>
+						<td>日本酒度:
+							<% if post.sake_degree.nil? %>
+							不明
+							<% else %>
+							<%= post.sake_degree %>
+							<% end %>
+						</td>
 						<td><div id="ajax_favorite"><%= render 'likes/like', post: post %></td></div>
 					</tr>
 					<tr><td>

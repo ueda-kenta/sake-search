@@ -39,6 +39,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem "rspec-rails"
+  gem "factory_bot_rails"
 end
 
 group :development do
@@ -75,6 +77,13 @@ gem "kaminari"
 gem "bootstrap4-kaminari-views"
 
 gem "geocoder"
+
+gem "whenever", require: false
+
+gem 'capistrano'
+gem 'capistrano-rails'
+gem 'capistrano3-puma'
+gem 'capistrano-rbenv'
 
 gem "dotenv-rails"
 group :production do

@@ -34,14 +34,14 @@ class User < ApplicationRecord
   def following?(other_user)
     self.followings.include?(other_user)
   end
-
+# ゲストユーザーの記述
   def self.guest
-    find_or_create_by!(last_name: 'ゲスト',first_name: 'たろう', nickname: 'ゲスト', email: 'guest@example.com') do |user|
+    User.find_or_create_by!(last_name: 'ゲスト',first_name: 'たろう', nickname: 'ゲスト', email: 'guest@example.com', profile_text: 'ゲストユーザーです。ゲストの投稿は1日ごとにリセットされます。') do |user|
       user.password = SecureRandom.urlsafe_base64
     end
   end
 
-
+# 検索機能
   def self.search(search,word)
     if search == "perfect_match"
       @user = User.where("nickname" ,"#{word}")
