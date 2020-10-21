@@ -4,42 +4,46 @@
 	</div>
 	<div class="row">
 		<%= form_for(@user) do |f| %>
-			<%= render 'layouts/error_form', model: f.object %>
-		<div class="col-md-8">
-			<div>
-			<%= f.label :プロフィール画像 %>
+		<%= render 'layouts/error_form', model: f.object %>
+		<div class="field">
 			<%= attachment_image_tag @user, :profile_img, fallback: "no_img.png", id: "item-img",size:"250x250" %>
-		    </div>
 			<%= f.attachment_field :profile_img %>
 		</div>
-		<div class="col-md-4">
+		<div class="field">
 			<%= f.label :姓 %>
 			<%= f.text_field :last_name, autofocus: true %><br>
+		</div>
+		<div class="field">
 			<%= f.label :名 %>
 			<%= f.text_field :first_name, autofocus: true %><br>
+		</div>
+		<div class="field">
 			<%= f.label :ニックネーム %>
 			<%= f.text_field :nickname, autofocus: true %><br>
+		</div>
+		<div class="field">
 			<%= f.label :紹介文 %>
 			<%= f.text_area :profile_text, autofocus: true %><br>
-			<%= f.submit "変更を保存", class: "btn btn-primary style: margin-left: 30px;" %>
 		</div>
-		<% end %>
+		<%= f.submit "変更を保存", class: "btn btn-primary style: margin-left: 30px;" %>
 	</div>
+	<% end %>
+</div>
 </div>
 
 <script>
 	$(document).on("turbolinks:load", function(){
-  function readURL(input) {
-    if(input.files && input.files[0]){
-      var reader = new FileReader();
-      reader.onload = function (e) {
-        $('#item-img').attr('src', e.target.result);
-      }
-      reader.readAsDataURL(input.files[0]);
-    }
-  }
-  $("#user_profile_img").change(function(){
-    readURL(this);
+		function readURL(input) {
+			if(input.files && input.files[0]){
+				var reader = new FileReader();
+				reader.onload = function (e) {
+					$('#item-img').attr('src', e.target.result);
+				}
+				reader.readAsDataURL(input.files[0]);
+			}
+		}
+		$("#user_profile_img").change(function(){
+			readURL(this);
   });
 });
 </script>

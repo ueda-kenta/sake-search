@@ -9,25 +9,33 @@
 			<table class="table">
 				<tbody>
 					<tr>
-						<%= render 'relationships/follow_button', user: @user %>
-					</tr>
-					<% if @user == current_user %>
-					<tr>
-						<td>
-							<% if @user.nickname != "ゲスト" %>
-							<%= link_to "編集", edit_user_path(@user), class: "btn btn-primary btn-block", style: "margin-left: 60px;" %>
-							<% end %>
+						<td colspan="2">
+							<div id="follow_button_<%= @user.id %>">
+								<%= render 'relationships/follow_button', user: @user %>
+							</div>
 						</td>
 					</tr>
-					<tr>
-						<th>名前</th>
-						<td><%= @user.last_name + " " + @user.first_name%></td>
-					</tr>
-					<% else %>
-					<tr>
-						<th>ニックネーム</th>
-						<td><%= @user.nickname %></td>
-					</tr>
+					<% if @user == current_user %>
+						<tr>
+							<td colspan="2">
+								<% if @user.nickname != "ゲスト" %>
+								<%= link_to "編集", edit_user_path(@user), class: "btn btn-primary btn-block", style: "margin-left: 60px;" %>
+								<% end %>
+							</td>
+						</tr>
+						<tr>
+							<th>名前</th>
+							<td><%= @user.last_name + " " + @user.first_name%></td>
+						</tr>
+						<tr>
+							<th>ニックネーム</th>
+							<td><%= @user.nickname %></td>
+						</tr>
+						<% else %>
+						<tr>
+							<th>ニックネーム</th>
+							<td><%= @user.nickname %></td>
+						</tr>
 					<% end %>
 					<tr>
 						<th>フォロー</th>
@@ -49,6 +57,7 @@
 		<div class="col-md-8">
 			<h3 class="text-font">投稿一覧</h3>
 			<%= render 'posts/sake_show', posts: @posts, user: @user %>
+			<%= paginate @posts, theme: "twitter-bootstrap-4" %>
 		</div>
 	</div>
 	<div class="row">

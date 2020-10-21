@@ -1,7 +1,7 @@
 class SakeBreweriesController < ApplicationController
 	def show
 		@sake_brewery = SakeBrewery.find(params[:id])
-		@posts = Post.where(sake_brewery_id: @sake_brewery.id)
+		@posts = Post.where(sake_brewery_id: @sake_brewery.id).page(params[:page]).per(3)
 	end
 
 	def edit

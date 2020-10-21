@@ -1,6 +1,6 @@
 <div class="container">
-	<h1>新規投稿</h1>
-	<div class="row">
+	<h1 class="text-font">新規投稿</h1>
+	<div class="row" style="margin-left: 20%">
 		<%= form_with(model: @post, local: true) do |f| %>
 		<%= render 'layouts/error_form', model: f.object %>
 		<div class="field">
@@ -34,7 +34,7 @@
 		<%= f.label :感想 %>
 		<%= f.text_area :sake_text %>
 		</div>
-		<%= f.submit "投稿" %>
+		<%= f.submit "投稿", class: "btn btn-primary" %>
 		<% end %>
 	</div>
 </div>

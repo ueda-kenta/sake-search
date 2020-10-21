@@ -1,8 +1,8 @@
-class Batch::Guest_reset
+class Batch::GuestReset
 
-	def reset
+	def self.reset
 		guest = User.find_by(nickname: "ゲスト" )
-		guest.posts.destroy_all
-		p OK
+		guest.posts.destroy
+		p "OK"
 	end
 end

@@ -36,8 +36,7 @@ class User < ApplicationRecord
   end
 # ゲストユーザーの記述
   def self.guest
-    find_or_create_by!(last_name: 'ゲスト',first_name: 'たろう', nickname: 'ゲスト', email: 'guest@example.com', 
-      　　　　　　　　　　profile_text: 'ゲストユーザーです。ゲストの投稿は1日ごとにリセットされます。') do |user|
+    User.find_or_create_by!(last_name: 'ゲスト',first_name: 'たろう', nickname: 'ゲスト', email: 'guest@example.com', profile_text: 'ゲストユーザーです。ゲストの投稿は1日ごとにリセットされます。') do |user|
       user.password = SecureRandom.urlsafe_base64
     end
   end

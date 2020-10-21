@@ -78,7 +78,7 @@ gem "bootstrap4-kaminari-views"
 
 gem "geocoder"
 
-gem "whenever", :require => false
+gem "whenever", require: false
 
 gem 'capistrano'
 gem 'capistrano-rails'
