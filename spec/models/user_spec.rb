@@ -5,7 +5,7 @@ RSpec.describe User, type: :model do
 		@user = FactoryBot.build(:user)
 	end
 
-	discribe 'バリデーションのテスト' do
+	describe 'バリデーションのテスト' do
 
 		it '姓、名、ニックネーム、メールアドレス、パスワードがあれば有効であること' do
 		 expect(@user).to be_valid
@@ -54,7 +54,7 @@ RSpec.describe User, type: :model do
 		end
 
 	end
-	discribe 'メソッドのテスト' do
+	describe 'メソッドのテスト' do
 
 		context 'searchメソッドのテスト' do
 			it '完全一致を選択した際、完全一致のデータを表示すること' do

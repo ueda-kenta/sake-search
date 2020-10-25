@@ -5,7 +5,7 @@ RSpec.describe Post, type: :model do
 		@post = FactoryBot.build(:post)
 	end
 
-	discribe 'バリデーションのテスト' do
+	describe 'バリデーションのテスト' do
 		it '酒名、紹介文があれば有効であること' do
 			expect(@post).to be_valid
 		end
@@ -35,7 +35,7 @@ RSpec.describe Post, type: :model do
 		end
 	end
 
-	discribe 'メソッドのテスト' do
+	describe 'メソッドのテスト' do
 		it 'searchメソッドのテスト' do
 			it '完全一致を選択した際、完全一致のデータを表示すること' do
 				expect(Post.search( "perfect_match", "テスト酒" )).to include(@post)

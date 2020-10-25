@@ -1,11 +1,11 @@
-<div class="container">
+<div class="container main-body">
 	<div class="row">
 		<%= link_to "タイムラインへ", posts_path, class: "btn btn-success",style: "height:40px;" %>
 		<h1 class="main_title text-font">ユーザー情報</h1>
 	</div>
 	<div class="row">
 		<div class="col-md-4 profile_img">
-			<%= attachment_image_tag @user, :profile_img, fallback: "no_img.png", size: "200x200", style: "margin-left: 60px;" %>
+			<%= attachment_image_tag @user, :profile_img, fallback: "no_img.png", size: "200x200", style: "margin-left:60px;" %>
 			<table class="table">
 				<tbody>
 					<tr>
@@ -19,7 +19,7 @@
 						<tr>
 							<td colspan="2">
 								<% if @user.nickname != "ゲスト" %>
-								<%= link_to "編集", edit_user_path(@user), class: "btn btn-primary btn-block", style: "margin-left: 60px;" %>
+								<%= link_to "編集", edit_user_path(@user), class: "btn btn-primary btn-block"%>
 								<% end %>
 							</td>
 						</tr>

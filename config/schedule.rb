@@ -19,9 +19,10 @@
 
 # Learn more: http://github.com/javan/whenever
 set :output, 'log/crontab.log'
-set :environment, :development
+set :environment, :production
 set :runner_command, "rails runner"
-
+env :PATH, ENV['PATH']
+# env :GEM_PATH, ENV['GEM_PATH']
 every 1.day, at: '9:00 am' do
   runner "Batch::ManHoursToBacklog.send_backlog"
 end

@@ -1,12 +1,13 @@
 <% posts.each do |post| %>
-		<table class="sake-index">
+		<table class="sake-index box">
 			<tbody>
 				<tr>
-					<th>投稿者: 
-						<%= link_to(user_path(post.user),"data-turbolinks": false, style:"text-decoration: none;" ) do %>
-						<%= attachment_image_tag post.user, :profile_img, fallback: "no_img.png", size: "30x30", style: "margin: 0 auto;" %><%= post.user.nickname %>
-						<% end %>
-					</th>
+						<th><span class="box-name">投稿者: 
+							<%= link_to(user_path(post.user),"data-turbolinks": false, style:"text-decoration: none;" ) do %>
+							<%= attachment_image_tag post.user, :profile_img, fallback: "no_img.png", size: "30x30", style: "margin: 0 auto;" %><%= post.user.nickname %>
+							<% end %>
+							</span>
+						</th>
 				</tr>
 				<tr>
 					<th>日本酒名:<%= link_to post.sake_name, post_path(post.id), style: "text-decoration: none;" %></th>
