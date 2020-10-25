@@ -8,6 +8,7 @@ set :rbenv_ruby, '2.5.7'
 set :linked_files, %w{config/master.key .env}
 append :linked_dirs, "log", "public", "tmp"
 set :whenever_command, "bundle exec whenever"
+# set :whenever_roles, -> { :app }
 require "whenever/capistrano"
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp

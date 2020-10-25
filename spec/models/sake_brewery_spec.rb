@@ -29,7 +29,7 @@ RSpec.describe SakeBrewery, type: :model do
 		end
 	end
 
-	discribe 'メソッドのテスト' do
+	describe 'メソッドのテスト' do
 		context 'addressメソッドのテスト'　do
 
 			it '都道府県と市町村が合体していること' do

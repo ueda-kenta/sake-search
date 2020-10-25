@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 		<h1 class="text-font">フォロータイムライン</h1>
-		<%= link_to "全体タイムライン", posts_path, class: "btn-icon", style: "text-decoration: none;" %>
+		<%= link_to "全体タイムライン", posts_path, class: "btn-icon", style: "text-decoration: none;margin-top:8px;" %>
 		<%= render 'posts/post_button' %>
 	</div>
 	<div class="row">
@@ -9,7 +9,7 @@
 	</div>
 	<div class="row">
 		<% if @posts.empty? %>
-		<div class="nil-post text-font">フォローがいません</div>
+		<div class="nil-post text-font">フォローがimasen</div>
 		<% else %>
 		<%= render 'posts/timeline', posts: @posts %>
 		<% end %>
