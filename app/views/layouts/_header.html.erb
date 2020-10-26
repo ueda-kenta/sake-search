@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-2">
-			<%= image_tag 'logo.png', :size => '100x100' %>
+			<%= image_tag asset_path('logo.png', :size => '100x100') %>
 		</div>
 		<!-- 検索窓 -->
 			<%if user_signed_in? %>
