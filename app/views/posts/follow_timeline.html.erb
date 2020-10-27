@@ -9,7 +9,7 @@
 	</div>
 	<div class="row">
 		<% if @posts.empty? %>
-		<div class="nil-post text-font">フォローがimasen</div>
+		<div class="nil-post text-font">フォローがいません</div>
 		<% else %>
 		<%= render 'posts/timeline', posts: @posts %>
 		<% end %>
