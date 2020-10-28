@@ -4,9 +4,9 @@
     <title>SakeSearch</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-   <!--<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %> -->
    <%= javascript_include_tag 'application' %>
   </head>
 
@@ -15,7 +15,9 @@
         <%= render 'layouts/header' %>
     </header>
     <%= render 'layouts/flash' %>
+    <main>
     <%= yield %>
+    </main>
     <footer>
       <%= render 'layouts/footer' %>
     </footer>

@@ -35,6 +35,10 @@
 					<%= link_to(users_guest_sign_in_path,method: :post, class: "login-btn btn-top", style: "text-decoration: none;") do %>
 					<i class="fa fa-chevron-circle-right"></i>
 					ゲストログイン
+					<%= link_to(new_user_session_path,method: :post, class: "login-btn btn-top", style: "text-decoration: none;margin-top:20px;") do %>
+					<i class="fa fa-chevron-circle-right"></i>
+					ログイン
+					<% end %>
 					<% end %>
 				</div>
 				<% else %>
