@@ -121,7 +121,7 @@
 					<% @users.each do |user| %>
 					<tr>
 						<td style="width: 20%">
-								<%= attachment_image_tag user, :profile_img, fallback: "no_img.png", size: "30x30" %>
+								<%= attachment_image_tag user, :profile_img, fallback: "no_img.png", size: "30x30", style: "margin: 0 auto;" %>
 							<%= link_to user.nickname, user_path(user) %>
 						</td>
 						<td style="width: 40%">
@@ -131,7 +131,9 @@
 							<%= user.posts.count %>件
 						</td>
 						<td style="width: 20%">
-							<%= render 'relationships/follow_button', user: user %>
+							<div id="follow_button_<%= user.id %>">
+								<%= render 'relationships/follow_button', user: user %>
+							</div>
 						</td>
 					</tr>
 					<% end %>
