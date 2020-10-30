@@ -8,8 +8,8 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
   # フォロー関連
-  has_many :relationships
-  has_many :followings, through: :relationships, source: :follow #follow_idを使ってfollowingにアクセス
+  has_many :relationships, dependent: :nullify
+  has_many :followings, through: :relationships, source: :follow # follow_idを使ってfollowingにアクセス
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
   has_many :followers, through: :reverse_of_relationships, source: :user
 
@@ -21,35 +21,34 @@ class User < ApplicationRecord
   validates :profile_text, length: { maximum: 140 }
 
   def follow(other_user)
-    unless self == other_user
-      self.relationships.find_or_create_by(follow_id: other_user.id)
-    end
+    relationships.find_or_create_by(follow_id: other_user.id) unless self == other_user
   end
 
   def unfollow(other_user)
-    relationship = self.relationships.find_by(follow_id: other_user.id)
-    relationship.destroy if relationship #if relationship exists? relationship.destroyと同義
+    relationship = relationships.find_by(follow_id: other_user.id)
+    relationship.destroy if relationship # if relationship exists? relationship.destroyと同義
   end
 
   def following?(other_user)
-    self.followings.include?(other_user)
+    followings.include?(other_user)
   end
-# ゲストユーザーの記述
+
+  # ゲストユーザーの記述
   def self.guest
-    User.find_or_create_by!(last_name: 'ゲスト',first_name: 'たろう', nickname: 'ゲスト', email: 'guest@example.com', profile_text: 'ゲストユーザーです。ゲストの投稿は1日ごとにリセットされます。') do |user|
+    User.find_or_create_by!(last_name: 'ゲスト', first_name: 'たろう', nickname: 'ゲスト', email: 'guest@example.com', profile_text: 'ゲストユーザーです。ゲストの投稿は1日ごとにリセットされます。') do |user|
       user.password = SecureRandom.urlsafe_base64
     end
   end
 
-# 検索機能
-  def self.search(search,word)
-    if search == "perfect_match"
-      @user = User.where("nickname" ,"#{word}")
-    elsif search == "partial_match"
-      @user = User.where("nickname LIKE?","%#{word}%")
-    else
-      @user = User.all
-    end
+  # 検索機能
+  def self.search(search, word)
+    @user = case search
+            when 'perfect_match'
+              User.where('nickname', word.to_s)
+            when 'partial_match'
+              User.where('nickname LIKE?', "%#{word}%")
+            else
+              User.all
+            end
   end
-
 end
