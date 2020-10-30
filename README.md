@@ -20,8 +20,6 @@
 ## 設計書
 er図(https://user-images.githubusercontent.com/67784775/97138584-e1c3b000-179b-11eb-8fe3-b1a86e2bb900.png)
 
-画面構成(https://user-images.githubusercontent.com/67784775/94758649-9efafc00-03d8-11eb-9882-ae24390bc874.jpg)
-
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/13MOJMwfoF9A990aH1fkfk4Og9D878jfMmb--VYSMhYk/edit#gid=0
 
@@ -31,7 +29,3 @@ https://docs.google.com/spreadsheets/d/13MOJMwfoF9A990aH1fkfk4Og9D878jfMmb--VYSM
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - 仮想環境：Vagrant,VirtualBox
-
-## 使用素材
-- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
-- 使用しない場合は、使用素材の項目をREADMEから削除してください。
