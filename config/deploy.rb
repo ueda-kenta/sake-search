@@ -1,15 +1,15 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.14.1"
+lock '~> 3.14.1'
 
-set :application, "sake-search"
-set :repo_url, "git@github.com:ueda-kenta/sake-search.git"
-set :deploy_to, "/home/ec2-user/sake-search"
+set :application, 'sake-search'
+set :repo_url, 'git@github.com:ueda-kenta/sake-search.git'
+set :deploy_to, '/home/ec2-user/sake-search'
 set :rbenv_ruby, '2.5.7'
-set :linked_files, %w{config/master.key .env}
-append :linked_dirs, "log", "public", "tmp"
-#set :whenever_command, "bundle exec whenever"
-set :whenever_roles,-> {:app}
-require "whenever/capistrano"
+set :linked_files, %w[config/master.key .env]
+append :linked_dirs, 'log', 'public', 'tmp'
+# set :whenever_command, "bundle exec whenever"
+set :whenever_roles, -> { :app }
+require 'whenever/capistrano'
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
