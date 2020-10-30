@@ -7,7 +7,7 @@
 			<%if user_signed_in? %>
 			<div class="search-window">
 				<%= form_tag(search_path, method: :get) do %>
-				　　<%= select_tag 'range' ,options_for_select([['-何をお探しですか？-', ''], ['日本酒名', '1'], ['酒蔵名', '2'],['ユーザー', '3']]) %>
+				　　<%= select_tag 'range' ,options_for_select([['-何をお探しですか？-', ''], ['日本酒', '1'], ['酒蔵', '2'],['ユーザー', '3']]) %>
 				　　<%= select_tag 'search', options_for_select([["部分一致","partial_match"],["完全一致","perfect_match"]]) %>
 				　　<%= text_field_tag(:word, "",{placeholder: "キーワードを入力"}) %>
 				　　<%= submit_tag "検索" %>

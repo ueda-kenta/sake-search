@@ -44,9 +44,8 @@ class PostsController < ApplicationController
 	end
 
 	def today_show
-		# @posts = Post.order("RANDOM()").limit(1)
 		@posts = Post.all.sample(1)
-		@post_ranking = Post.find(Like.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
+		@post_ranking = Post.create_ranks
 	end
 
 	private
