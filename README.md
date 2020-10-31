@@ -3,6 +3,14 @@
 ## サイト概要
 自分の飲んだ日本酒を共有、新たな日本酒と出会える、日本酒投稿アプリ
 
+ゲストログインで全ての機能が使用できます。
+
+<img width="1419" alt="スクリーンショット 2020-10-29 16 52 32" src="https://user-images.githubusercontent.com/67784775/97685469-66843600-1adc-11eb-8d15-fa1c48edfa4a.png">
+
+
+<img width="1423" alt="スクリーンショット 2020-10-29 16 53 33" src="https://user-images.githubusercontent.com/67784775/97685497-684df980-1adc-11eb-884a-7b301bbf8bab.png">
+
+
 ### サイトテーマ
 日本酒が好きな人には、飲んでみたい新たな日本酒を探し、日本酒をあまり飲んだことないけど飲んでみたいひとには、飲みはじめるきっかけを作るアプリです。
 
@@ -20,8 +28,6 @@
 ## 設計書
 er図(https://user-images.githubusercontent.com/67784775/97138584-e1c3b000-179b-11eb-8fe3-b1a86e2bb900.png)
 
-画面構成(https://user-images.githubusercontent.com/67784775/94758649-9efafc00-03d8-11eb-9882-ae24390bc874.jpg)
-
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/13MOJMwfoF9A990aH1fkfk4Og9D878jfMmb--VYSMhYk/edit#gid=0
 
@@ -31,7 +37,3 @@ https://docs.google.com/spreadsheets/d/13MOJMwfoF9A990aH1fkfk4Og9D878jfMmb--VYSM
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - 仮想環境：Vagrant,VirtualBox
-
-## 使用素材
-- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
-- 使用しない場合は、使用素材の項目をREADMEから削除してください。
