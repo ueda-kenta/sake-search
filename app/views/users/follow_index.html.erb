@@ -21,7 +21,7 @@
 				<% @relationships.each do |relationship| %>
 					<tr>
 						<td style="width:8%">
-							<%= attachment_image_tag relationship.follow, :profile_img, fallback: "no_img.png", size: "30x30" %>
+							<%= attachment_image_tag relationship.follow, :profile_img, fallback: "no_img.png", size: "30x30", style:"margin: 0 auto;" %>
 						</td>
 						<th style="width:15%">
 							<%= relationship.follow.nickname %>
