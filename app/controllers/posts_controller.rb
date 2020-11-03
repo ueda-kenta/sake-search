@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+   before_action :authenticate_user!
+   
   def new
     @post = Post.new
     @post.build_sake_brewery
